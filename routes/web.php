@@ -1,0 +1,51 @@
+<?php
+
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\PagesController;
+use App\Http\Controllers\ContratController;
+use App\Http\Controllers\MissionController;
+use App\Http\Controllers\OccasionnelleController;
+use App\Http\Controllers\PaiementController;
+use App\Http\Controllers\PersonnelController;
+use App\Http\Controllers\PrecompteController;
+
+/*
+|--------------------------------------------------------------------------
+| Web Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register web routes for your application. These
+| routes are loaded by the RouteServiceProvider and all of them will
+| be assigned to the "web" middleware group. Make something great!
+|
+*/
+
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+ 
+Route::get('/', [PagesController::class, 'index'])->name('authentification');
+Route::post('seconnecter', [AuthController::class, 'login'])->name('login');
+Route::post('sedeconnecter', [AuthController::class, 'logout'])->name('logout');
+Route::get('dashboard', [PagesController::class, 'dash'])->name('dashboard');
+Route::get('imprimer_contrat/{id}', [ContratController::class, 'print']);
+
+
+Route::resource('gestion_personnel', PersonnelController::class);
+
+Route::resource('gestion_mission', MissionController::class);
+
+Route::resource('gestion_contrat', ContratController::class);
+
+Route::resource('gestion_paiement', PaiementController::class);
+Route::get('generation_paiement/{id}', [PaiementController::class, 'generation']);
+Route::get('liste_paiements', [PaiementController::class, 'liste_paie'])->name('paies');
+Route::get('finds_paies/{id}', [PaiementController::class, 'find']);
+Route::get('imprimer_bulletin/{id}', [PaiementController::class, 'print_bulletin']);
+Route::get('Filter/periode_filter', [PaiementController::class, 'date_filter'])->name('date_filter');
+Route::get('Generation_plusieurs', [PaiementController::class, 'Gener_groupe'])->name('Generation_plusieurs');
+
+Route::resource('gestion_occasionnelles', OccasionnelleController::class);
+
+Route::resource('gestion_precomptes', PrecompteController::class);
