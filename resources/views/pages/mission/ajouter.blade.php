@@ -138,12 +138,12 @@
                                                             </div>
                                                         </div>
                                                     </div>
-
                                                     <!-- Bouton pour soumettre -->
                                                     <div class="mt-3">
-                                                        <button type="submit" class="btn btn-success">Enregistrer la
-                                                            mission</button>
+                                                        <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#formValidationBackdrop">Enregistrer</button>
+                                                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Fermer</button>
                                                     </div>
+                                                    @include('require.validationModal')
                                                 </div>
                                             </form>
                                         </div>

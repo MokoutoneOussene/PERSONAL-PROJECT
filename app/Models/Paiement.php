@@ -16,4 +16,8 @@ class Paiement extends Model
     function Contrat() {
         return $this->belongsTo(Contrat::class, 'contrats_id');
     }
+
+    function Banque() {
+        return $this->belongsTo(IstitutBank::class, 'istitut_banks_id');
+    }
 }

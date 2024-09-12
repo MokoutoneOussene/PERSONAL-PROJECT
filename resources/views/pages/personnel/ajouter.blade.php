@@ -51,41 +51,40 @@
                                                     <h3 class="m-2 text-center text-danger">Veuillez renseigner les
                                                         informations de l'agent
                                                     </h3>
-                                                    <p class="mb-5">NB: les champs ayant des * en couleur rouge sont obligatoires </p>
-
+                                                    <p class="mb-5">NB: les champs ayant des * en couleur rouge sont
+                                                        obligatoires </p>
+    
                                                     <div class="row">
                                                         <div class="col-lg-4 col-md-12">
                                                             <div class="mb-3">
-                                                                <label>N° sécurité sociale <span class="text-danger">*</span></label>
-                                                                <input class="form-control" type="text"
-                                                                    name="num_secu_social" />
+                                                                <label>N° sécurité sociale<span
+                                                                        class="text-danger">*</span></label>
+                                                                <input class="form-control" type="text" name="num_secu_social" />
                                                             </div>
                                                         </div>
                                                         <div class="col-lg-4 col-md-12">
                                                             <div class="mb-3">
-                                                                <label>Nom <span class="text-danger">*</span></label>
+                                                                <label>Nom<span class="text-danger">*</span></label>
                                                                 <input class="form-control" type="text" name="nom" />
                                                             </div>
                                                         </div>
                                                         <div class="col-lg-4 col-md-12">
                                                             <div class="mb-3">
-                                                                <label>Prénoms <span class="text-danger">*</span></label>
+                                                                <label>Prénom<span class="text-danger">*</span></label>
                                                                 <input class="form-control" type="text" name="prenom" />
                                                             </div>
                                                         </div>
                                                     </div>
                                                     <div class="row">
-
                                                         <div class="col-lg-4 col-md-12">
                                                             <div class="mb-3">
                                                                 <label>Date de maissance</label>
-                                                                <input class="form-control" type="date"
-                                                                    name="date_nais" />
+                                                                <input class="form-control" type="date" name="date_nais" />
                                                             </div>
                                                         </div>
                                                         <div class="col-lg-4 col-md-12">
                                                             <div class="mb-3">
-                                                                <label>Genre</label>
+                                                                <label>Sexe</label>
                                                                 <select name="genre" class="form-control">
                                                                     <option value="Masculin">Masculin</option>
                                                                     <option value="Feminin">Feminin</option>
@@ -95,15 +94,13 @@
                                                         <div class="col-lg-4 col-md-12">
                                                             <div class="mb-3">
                                                                 <label>Résidence</label>
-                                                                <input class="form-control" type="text"
-                                                                    name="residence" />
+                                                                <input class="form-control" type="text" name="residence" />
                                                             </div>
                                                         </div>
                                                         <div class="col-lg-4 col-md-12">
                                                             <div class="mb-3">
                                                                 <label>Date d'embauche <span class="text-danger">*</span></label>
-                                                                <input class="form-control" type="date"
-                                                                    name="date_embauche" />
+                                                                <input class="form-control" type="date" name="date_embauche" />
                                                             </div>
                                                         </div>
                                                         <div class="col-lg-4 col-md-12">
@@ -119,8 +116,7 @@
                                                         <div class="col-lg-4 col-md-12">
                                                             <div class="mb-3">
                                                                 <label>Téléphone</label>
-                                                                <input class="form-control" type="number"
-                                                                    name="telephone" />
+                                                                <input class="form-control" type="number" name="telephone" />
                                                             </div>
                                                         </div>
                                                         <div class="col-lg-4 col-md-12">
@@ -142,120 +138,116 @@
                                                         <div class="col-lg-4 col-md-12">
                                                             <div class="mb-3">
                                                                 <label>Mère</label>
-                                                                <input class="form-control" type="text"
-                                                                    name="mere" />
+                                                                <input class="form-control" type="text" name="mere" />
                                                             </div>
                                                         </div>
                                                         <div class="col-lg-4 col-md-12">
                                                             <div class="mb-3">
                                                                 <label>Personne à prévenir</label>
-                                                                <input class="form-control" type="text"
-                                                                    name="perso_prevenir" />
+                                                                <input class="form-control" type="text" name="perso_prevenir" />
                                                             </div>
                                                         </div>
                                                         <div class="col-lg-4 col-md-12">
                                                             <div class="mb-3">
                                                                 <label>Tel PP</label>
-                                                                <input class="form-control" type="number"
-                                                                    name="tele_perso_prevenir" />
+                                                                <input class="form-control" type="number" name="tele_perso_prevenir" />
                                                             </div>
                                                         </div>
                                                         <div class="col-lg-4 col-md-12">
                                                             <div class="mb-3">
                                                                 <label>Lieu de naissance</label>
-                                                                <input class="form-control" type="text"
-                                                                    name="lieunais" />
+                                                                <input class="form-control" type="text" name="lieunais" />
                                                             </div>
                                                         </div>
                                                         <div class="col-lg-4 col-md-12">
                                                             <div class="mb-3">
                                                                 <label>Province</label>
-                                                                <input class="form-control" type="text"
-                                                                    name="province" />
+                                                                <input class="form-control" type="text" name="province" />
                                                             </div>
                                                         </div>
                                                         <div class="col-lg-4 col-md-12">
                                                             <div class="mb-3">
                                                                 <label>Matrimoniale</label>
-                                                                <input class="form-control" type="text"
-                                                                    name="matrimoniale" />
+                                                                <input class="form-control" type="text" name="matrimoniale" />
                                                             </div>
                                                         </div>
                                                         <div class="col-lg-4 col-md-12">
                                                             <div class="mb-3">
                                                                 <label>Date résiliation contrat</label>
-                                                                <input class="form-control" type="date"
-                                                                    name="date_resiliation" />
+                                                                <input class="form-control" type="date" name="date_resiliation" />
                                                             </div>
                                                         </div>
                                                         <div class="col-lg-4 col-md-12">
                                                             <div class="mb-3">
                                                                 <label>Fonction</label>
-                                                                <input class="form-control" type="text"
-                                                                    name="fonction" />
+                                                                <select name="fonction" class="form-control">
+                                                                    <option value="Responsable HSE">Responsable HSE</option>
+                                                                    <option value="Superviseur">Superviseur</option>
+                                                                    <option value="Mécanicien">Mécanicien</option>
+                                                                    <option value="Foreur">Foreur</option>
+                                                                    <option value="Aide foreur">Aide foreur</option>
+                                                                    <option value="Assistant HSE">Assistant HSE</option>
+                                                                    <option value="Aide Mécanicien">Aide Mécanicien</option>
+                                                                    <option value="Secretaire">Secretaire</option>
+                                                                    <option value="Comptable">Comptable</option>
+                                                                </select>
                                                             </div>
                                                         </div>
                                                         <div class="col-lg-4 col-md-12">
                                                             <div class="mb-3">
                                                                 <label>Email</label>
-                                                                <input class="form-control" type="email"
-                                                                    name="email" />
+                                                                <input class="form-control" type="email" name="email" />
                                                             </div>
                                                         </div>
                                                         <div class="col-lg-4 col-md-12">
                                                             <div class="mb-3">
                                                                 <label>Contrat</label>
-                                                                <input class="form-control" type="text"
-                                                                    name="contrat" />
+                                                                <input class="form-control" type="text" name="contrat" />
                                                             </div>
                                                         </div>
                                                         <div class="col-lg-4 col-md-12">
                                                             <div class="mb-3">
                                                                 <label>N° CNIB ou Passport</label>
-                                                                <input class="form-control" type="text"
-                                                                    name="num_cnib" />
+                                                                <input class="form-control" type="text" name="num_cnib" />
                                                             </div>
                                                         </div>
                                                         <div class="col-lg-4 col-md-12">
                                                             <div class="mb-3">
                                                                 <label>Date d'établissement</label>
-                                                                <input class="form-control" type="date"
-                                                                    name="date_cnib" />
+                                                                <input class="form-control" type="date" name="date_cnib" />
                                                             </div>
                                                         </div>
                                                         <div class="col-lg-4 col-md-12">
                                                             <div class="mb-3">
                                                                 <label>Lieu d'établissement</label>
-                                                                <input class="form-control" type="text"
-                                                                    name="lieu_cnib" />
+                                                                <input class="form-control" type="text" name="lieu_cnib" />
                                                             </div>
                                                         </div>
                                                         <div class="col-lg-4 col-md-12">
                                                             <div class="mb-3">
                                                                 <label>Nbre enfants</label>
-                                                                <input class="form-control" type="number"
-                                                                    name="nbre_enfant" />
+                                                                <input class="form-control" type="number" name="nbre_enfant" />
                                                             </div>
                                                         </div>
                                                         <div class="col-lg-4 col-md-12">
                                                             <div class="mb-3">
                                                                 <label>Charge UITS</label>
-                                                                <input class="form-control" type="text"
-                                                                    name="charge_uts" />
+                                                                <input class="form-control" type="text" name="charge_uts" />
                                                             </div>
                                                         </div>
                                                         <div class="col-lg-4 col-md-12">
                                                             <div class="mb-3">
                                                                 <label>Photo</label>
-                                                                <input class="form-control" type="file" name="photo" required/>
+                                                                <input class="form-control" type="file" name="photo" required />
                                                             </div>
                                                         </div>
                                                     </div>
-
                                                     <div class="mt-3">
-                                                        <button type="submit"
-                                                            class="btn btn-success">Enregistrer</button>
+                                                        <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#formValidationBackdrop">Enregistrer</button>
+                                                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Fermer</button>
                                                     </div>
+                                                    @include('require.validationModal')
+                                                </div>
                                             </form>
                                         </div>
                                     </div>

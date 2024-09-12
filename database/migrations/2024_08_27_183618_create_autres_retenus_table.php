@@ -11,16 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('precomptes', function (Blueprint $table) {
+        Schema::create('autres_retenus', function (Blueprint $table) {
             $table->id();
             $table->string('code')->nullable();
             $table->string('libelle')->nullable();
+            $table->decimal('montant')->nullable();
             $table->string('statut')->nullable();
-            $table->decimal('capital_initial')->nullable();
-            $table->integer('nbr_echeance')->nullable();
-            $table->decimal('retenu_mois')->nullable();
-            $table->date('date_debut')->nullable();
-            $table->date('date_fin')->nullable();
 
             $table->foreignId('contrats_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
@@ -32,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('precomptes');
+        Schema::dropIfExists('autres_retenus');
     }
 };

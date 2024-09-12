@@ -19,24 +19,23 @@ return new class extends Migration
             $table->date('date_signature')->nullable();
             $table->string('statut')->nullable();
 
+            $table->decimal('base')->nullable();
+            $table->decimal('taux')->nullable();
             $table->decimal('sal_base')->nullable();
 
             // Indemnités supplémentaires
             $table->decimal('prime_anciennete')->nullable();
             $table->decimal('prime_logement')->nullable();
             $table->decimal('prime_transport')->nullable();
-            $table->decimal('prime_divers')->nullable();
+            $table->decimal('prime_fonction')->nullable();
             $table->decimal('total_indemnite')->nullable();
 
             //Salaire brut
             $table->decimal('salaire_brut')->nullable();
 
             // Retenues sur salaire
-            $table->decimal('uits')->nullable();
-            $table->decimal('cotisation_sociale')->nullable();
-            $table->decimal('impot')->nullable();
-            $table->decimal('avance_pret')->nullable();
-            $table->decimal('mutuelle_payee')->nullable();
+            $table->decimal('iuts')->nullable();
+            $table->decimal('cnss')->nullable();
             $table->decimal('total_retenue')->nullable();
 
             //Salaire net à payer

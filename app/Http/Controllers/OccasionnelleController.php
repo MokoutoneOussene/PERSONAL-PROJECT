@@ -32,7 +32,7 @@ class OccasionnelleController extends Controller
         Occasionnelle::create($request->all());
 
         emotify('success', 'Charge occasionnelle effectué avec success !');
-        return redirect()->back();
+        return redirect()->back()->with('message', 'Charge occasionnelle effectué avec success !');
     }
 
     /**

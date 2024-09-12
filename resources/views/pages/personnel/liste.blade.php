@@ -40,18 +40,24 @@
                     <div class="card-body">
                         <div
                             style="background: linear-gradient(90deg, rgb(160, 240, 195) 0%, rgb(237, 237, 163) 100%); border-radius: 5px;">
-                            <form action="" method="GET">
+                            <form action="{{ route('perso_filter') }}" method="GET">
                                 <div class="d-flex justify-content-end mb-3">
                                     <div class="col-3 m-2">
-                                        <label>Date debut</label>
-                                        <input class="form-control" name="date_debut" type="date" required />
-                                    </div>
-                                    <div class="col-3 m-2">
-                                        <label>Date fin</label>
-                                        <input class="form-control" name="date_fin" type="date" required />
+                                        <label>Selectionner une fonction</label>
+                                        <select name="fonction" class="form-control">
+                                            <option value="Responsable HSE">Responsable HSE</option>
+                                            <option value="Superviseur">Superviseur</option>
+                                            <option value="Mécanicien">Mécanicien</option>
+                                            <option value="Foreur">Foreur</option>
+                                            <option value="Aide foreur">Aide foreur</option>
+                                            <option value="Assistant HSE">Assistant HSE</option>
+                                            <option value="Aide Mécanicien">Aide Mécanicien</option>
+                                            <option value="Secretaire">Secretaire</option>
+                                            <option value="Comptable">Comptable</option>
+                                        </select>
                                     </div>
                                     <div class="col-1 m-2 pt-4">
-                                        <button type="submit" class="btn btn-success">Filtrer</button>
+                                        <button type="submit" class="btn btn-success">Actualiser</button>
                                     </div>
                                 </div>
                             </form>
@@ -91,7 +97,6 @@
                                 @endforeach
                             </tbody>
                         </table>
-
                     </div>
                 </div>
             </div>
@@ -116,8 +121,7 @@
                             <div class="card mb-4">
                                 <div class="card-body">
                                     <div class="sbp-preview-content">
-                                        <form method="POST" action="{{ route('gestion_personnel.store') }}"
-                                            enctype="multipart/form-data">
+                                        <form method="POST" action="{{ route('gestion_personnel.store') }}" enctype="multipart/form-data">
                                             @csrf
                                             <div class="p-2 m-1"
                                                 style="border: 2px solid rgb(242, 199, 174); border-radius: 5px;">
@@ -130,27 +134,25 @@
                                                 <div class="row">
                                                     <div class="col-lg-4 col-md-12">
                                                         <div class="mb-3">
-                                                            <label>N° sécurité sociale <span
+                                                            <label>N° sécurité sociale<span
                                                                     class="text-danger">*</span></label>
-                                                            <input class="form-control" type="text"
-                                                                name="num_secu_social" />
+                                                            <input class="form-control" type="text" name="num_secu_social" />
                                                         </div>
                                                     </div>
                                                     <div class="col-lg-4 col-md-12">
                                                         <div class="mb-3">
-                                                            <label>Nom <span class="text-danger">*</span></label>
+                                                            <label>Nom<span class="text-danger">*</span></label>
                                                             <input class="form-control" type="text" name="nom" />
                                                         </div>
                                                     </div>
                                                     <div class="col-lg-4 col-md-12">
                                                         <div class="mb-3">
-                                                            <label>Prénoms <span class="text-danger">*</span></label>
+                                                            <label>Prénom<span class="text-danger">*</span></label>
                                                             <input class="form-control" type="text" name="prenom" />
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="row">
-
                                                     <div class="col-lg-4 col-md-12">
                                                         <div class="mb-3">
                                                             <label>Date de maissance</label>
@@ -159,7 +161,7 @@
                                                     </div>
                                                     <div class="col-lg-4 col-md-12">
                                                         <div class="mb-3">
-                                                            <label>Genre</label>
+                                                            <label>Sexe</label>
                                                             <select name="genre" class="form-control">
                                                                 <option value="Masculin">Masculin</option>
                                                                 <option value="Feminin">Feminin</option>
@@ -169,16 +171,13 @@
                                                     <div class="col-lg-4 col-md-12">
                                                         <div class="mb-3">
                                                             <label>Résidence</label>
-                                                            <input class="form-control" type="text"
-                                                                name="residence" />
+                                                            <input class="form-control" type="text" name="residence" />
                                                         </div>
                                                     </div>
                                                     <div class="col-lg-4 col-md-12">
                                                         <div class="mb-3">
-                                                            <label>Date d'embauche <span
-                                                                    class="text-danger">*</span></label>
-                                                            <input class="form-control" type="date"
-                                                                name="date_embauche" />
+                                                            <label>Date d'embauche <span class="text-danger">*</span></label>
+                                                            <input class="form-control" type="date" name="date_embauche" />
                                                         </div>
                                                     </div>
                                                     <div class="col-lg-4 col-md-12">
@@ -194,8 +193,7 @@
                                                     <div class="col-lg-4 col-md-12">
                                                         <div class="mb-3">
                                                             <label>Téléphone</label>
-                                                            <input class="form-control" type="number"
-                                                                name="telephone" />
+                                                            <input class="form-control" type="number" name="telephone" />
                                                         </div>
                                                     </div>
                                                     <div class="col-lg-4 col-md-12">
@@ -223,15 +221,13 @@
                                                     <div class="col-lg-4 col-md-12">
                                                         <div class="mb-3">
                                                             <label>Personne à prévenir</label>
-                                                            <input class="form-control" type="text"
-                                                                name="perso_prevenir" />
+                                                            <input class="form-control" type="text" name="perso_prevenir" />
                                                         </div>
                                                     </div>
                                                     <div class="col-lg-4 col-md-12">
                                                         <div class="mb-3">
                                                             <label>Tel PP</label>
-                                                            <input class="form-control" type="number"
-                                                                name="tele_perso_prevenir" />
+                                                            <input class="form-control" type="number" name="tele_perso_prevenir" />
                                                         </div>
                                                     </div>
                                                     <div class="col-lg-4 col-md-12">
@@ -249,21 +245,29 @@
                                                     <div class="col-lg-4 col-md-12">
                                                         <div class="mb-3">
                                                             <label>Matrimoniale</label>
-                                                            <input class="form-control" type="text"
-                                                                name="matrimoniale" />
+                                                            <input class="form-control" type="text" name="matrimoniale" />
                                                         </div>
                                                     </div>
                                                     <div class="col-lg-4 col-md-12">
                                                         <div class="mb-3">
                                                             <label>Date résiliation contrat</label>
-                                                            <input class="form-control" type="date"
-                                                                name="date_resiliation" />
+                                                            <input class="form-control" type="date" name="date_resiliation" />
                                                         </div>
                                                     </div>
                                                     <div class="col-lg-4 col-md-12">
                                                         <div class="mb-3">
                                                             <label>Fonction</label>
-                                                            <input class="form-control" type="text" name="fonction" />
+                                                            <select name="fonction" class="form-control">
+                                                                <option value="Responsable HSE">Responsable HSE</option>
+                                                                <option value="Superviseur">Superviseur</option>
+                                                                <option value="Mécanicien">Mécanicien</option>
+                                                                <option value="Foreur">Foreur</option>
+                                                                <option value="Aide foreur">Aide foreur</option>
+                                                                <option value="Assistant HSE">Assistant HSE</option>
+                                                                <option value="Aide Mécanicien">Aide Mécanicien</option>
+                                                                <option value="Secretaire">Secretaire</option>
+                                                                <option value="Comptable">Comptable</option>
+                                                            </select>
                                                         </div>
                                                     </div>
                                                     <div class="col-lg-4 col-md-12">
@@ -287,29 +291,25 @@
                                                     <div class="col-lg-4 col-md-12">
                                                         <div class="mb-3">
                                                             <label>Date d'établissement</label>
-                                                            <input class="form-control" type="date"
-                                                                name="date_cnib" />
+                                                            <input class="form-control" type="date" name="date_cnib" />
                                                         </div>
                                                     </div>
                                                     <div class="col-lg-4 col-md-12">
                                                         <div class="mb-3">
                                                             <label>Lieu d'établissement</label>
-                                                            <input class="form-control" type="text"
-                                                                name="lieu_cnib" />
+                                                            <input class="form-control" type="text" name="lieu_cnib" />
                                                         </div>
                                                     </div>
                                                     <div class="col-lg-4 col-md-12">
                                                         <div class="mb-3">
                                                             <label>Nbre enfants</label>
-                                                            <input class="form-control" type="number"
-                                                                name="nbre_enfant" />
+                                                            <input class="form-control" type="number" name="nbre_enfant" />
                                                         </div>
                                                     </div>
                                                     <div class="col-lg-4 col-md-12">
                                                         <div class="mb-3">
                                                             <label>Charge UITS</label>
-                                                            <input class="form-control" type="text"
-                                                                name="charge_uts" />
+                                                            <input class="form-control" type="text" name="charge_uts" />
                                                         </div>
                                                     </div>
                                                     <div class="col-lg-4 col-md-12">
@@ -320,10 +320,11 @@
                                                     </div>
                                                 </div>
                                                 <div class="mt-3">
-                                                    <button type="submit" class="btn btn-success">Enregistrer</button>
-                                                    <button type="button" class="btn btn-danger"
-                                                        data-bs-dismiss="modal">Fermer</button>
+                                                    <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#formValidationBackdrop">Enregistrer</button>
+                                                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Fermer</button>
                                                 </div>
+                                                @include('require.validationModal')
+                                            </div>
                                         </form>
                                     </div>
                                 </div>

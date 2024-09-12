@@ -36,7 +36,7 @@ class ContratController extends Controller
         Contrat::create($request->all());
 
         emotify('success', 'Contract ajouté avec success !');
-        return redirect()->route('gestion_contrat.index');
+        return redirect()->route('gestion_contrat.index')->with('message', 'Le contract a été ajouté avec succès !');
     }
 
     /**

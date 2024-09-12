@@ -8,14 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class Mission extends Model
 {
     use HasFactory;
+    
     protected $guarded = [
 
     ];
 
     public function personnels()
     {
-        return $this->belongsToMany(Personnel::class, 'mission_personnel')
-                    ->withPivot('role', 'task')
-                    ->withTimestamps();
+        return $this->belongsToMany(Personnel::class, 'mission_personnel')->withPivot('role', 'task')->withTimestamps();
     }
 }

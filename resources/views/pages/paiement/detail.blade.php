@@ -113,16 +113,16 @@
                                 <td>{{ $finds->Contrat->prime_anciennete }} fcfa</td>
                             </tr>
                             <tr class="border_dotted">
-                                <th>Prime logement</th>
+                                <th>Indemnité de logement</th>
                                 <td>{{ $finds->Contrat->prime_logement }} fcfa</td>
                             </tr>
                             <tr class="border_dotted">
-                                <th>Prime transport</th>
+                                <th>Indemnité de transport</th>
                                 <td>{{ $finds->Contrat->prime_transport }} fcfa</td>
                             </tr>
                             <tr class="border_dotted">
-                                <th>Prime divers</th>
-                                <td>{{ $finds->Contrat->prime_divers }} fcfa</td>
+                                <th>Indemnité de transport</th>
+                                <td>{{ $finds->Contrat->prime_fonction }} fcfa</td>
                             </tr>
                             <tr class="border_dotted">
                                 <th class="text-danger">Total Indemnités supplémentaires</th>
@@ -144,23 +144,11 @@
                         <table style="width: 100%;">
                             <tr class="border_dotted">
                                 <th>UITS</th>
-                                <td>{{ $finds->Contrat->uits }} fcfa</td>
+                                <td>{{ $finds->Contrat->iuts }} fcfa</td>
                             </tr>
                             <tr class="border_dotted">
-                                <th>Cotisations sociales salarié</th>
-                                <td>{{ $finds->Contrat->cotisation_sociale }} fcfa</td>
-                            </tr>
-                            <tr class="border_dotted">
-                                <th>Impôts</th>
-                                <td>{{ $finds->Contrat->impot }} fcfa</td>
-                            </tr>
-                            <tr class="border_dotted">
-                                <th>Avance / prêt reçu</th>
-                                <td>{{ $finds->Contrat->avance_pret }} fcfa</td>
-                            </tr>
-                            <tr class="border_dotted">
-                                <th>Mutuelle payée par l’employé</th>
-                                <td>{{ $finds->Contrat->mutuelle_payee }} fcfa</td>
+                                <th>CNSS</th>
+                                <td>{{ $finds->Contrat->cnss }} fcfa</td>
                             </tr>
                             <tr class="border_dotted">
                                 <th class="text-danger">Total retenues sur salaire</th>

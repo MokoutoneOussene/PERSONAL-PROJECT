@@ -34,34 +34,39 @@ class AppServiceProvider extends ServiceProvider
         Contrat::created(function ($contrat) {
             $contrat->update(['code' => 'CONT-00' . $contrat->id]);
             //Calcul des indemnités
-            $contrat->update(['total_indemnite' => $contrat->prime_anciennete + $contrat->prime_logement + $contrat->prime_transport + $contrat->prime_divers]);
+            $contrat->update(['total_indemnite' => $contrat->prime_anciennete + $contrat->prime_logement + $contrat->prime_transport + $contrat->prime_fonction]);
 
+            //Calcul de salaire de base
+            $contrat->update(['sal_base' => $contrat->base * $contrat->taux]);
+            
             //Calcul de salaire brut
             $contrat->update(['salaire_brut' => $contrat->sal_base + $contrat->total_indemnite]);
 
+            //Calcul du retenues cnss
+            $contrat->update(['cnss' => $contrat->salaire_brut * 5.5 / 100]);
+
+            //Calcul du retenues iuts
+            //$contrat->update(['iuts' => $contrat->salaire_brut * 5,5 / 100]);
+
             //Calcul du retenues sur salaire
-            $contrat->update(['total_retenue' => $contrat->uits + $contrat->cotisation_sociale + $contrat->impot + $contrat->avance_pret + $contrat->mutuelle_payee]);
+            $contrat->update(['total_retenue' => $contrat->iuts + $contrat->cnss]);
 
             //Salaire net à payer
             $contrat->update(['sal_net' => $contrat->salaire_brut - $contrat->total_retenue]);
         });
 
-        Occasionnelle::created(function ($occas) {
-            $occas->update(['code' => 'OC-00' . $occas->id]);
-        });
-
         Precompte::created(function ($precom) {
-            $precom->update(['code' => 'PR-00' . $precom->id]);
-
             // Calcul de pré-compte
-            $precom->update(['marge' => $precom->capital_initial * 5/100]);
-            $precom->update(['montant_rembourse' => $precom->capital_initial + $precom->marge]);
-            $precom->update(['retenu_mois' => $precom->montant_rembourse / $precom->nbr_echeance]);
+            $precom->update(['retenu_mois' => $precom->capital_initial / $precom->nbr_echeance]);
         });
 
         Paiement::created(function ($paie) {
             $paie->update(['code' => 'PAI-00' . $paie->id]);
-            $paie->update(['salaire_total' => $paie->Contrat->sal_net + $paie->occasionnelle - $paie->precompte]);      
+
+            $paie->update(['avoir' => $paie->Contrat->salaire_brut + $paie->occasionnelle]);
+            $paie->update(['retenu' => $paie->Contrat->total_retenue + $paie->precompte + $paie->autres_retenu]);
+
+            $paie->update(['salaire_total' => $paie->avoir - $paie->retenu]);    
         });
         
         Mission::created(function ($code) {

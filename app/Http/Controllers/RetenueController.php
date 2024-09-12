@@ -3,10 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Models\Precompte;
+use App\Models\AutresRetenu;
 use Illuminate\Http\Request;
 
-class PrecompteController extends Controller
+class RetenueController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -29,10 +29,10 @@ class PrecompteController extends Controller
      */
     public function store(Request $request)
     {
-        Precompte::create($request->all());
+        AutresRetenu::create($request->all());
 
-        emotify('success', 'Charge de pré-compte effectué avec success !');
-        return redirect()->back()->with('message', 'Charge de pré-compte effectué avec success !');
+        emotify('success', 'Retenue ajoutés avec success !');
+        return redirect()->back()->with('message', 'Retenue ajoutés avec success !');
     }
 
     /**
@@ -40,8 +40,7 @@ class PrecompteController extends Controller
      */
     public function show(string $id)
     {
-        $finds = Precompte::find($id);
-        return view('pages.generation.detail_precompte', compact('finds'));
+        //
     }
 
     /**

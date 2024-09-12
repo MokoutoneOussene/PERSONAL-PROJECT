@@ -65,8 +65,19 @@
                     <div class="collapse" id="pagesCollapseError5" data-bs-parent="#accordionSidenavPagesMenu">
                         <nav class="sidenav-menu-nested nav">
                             <a class="nav-link" href="{{ route('gestion_paiement.index') }}">Génération individuel</a>
-                            <a class="nav-link" href="{{ route('Generation_plusieurs') }}">Génération pour plusieurs</a>
+                            <a class="nav-link" href="{{ route('Generation_plusieurs') }}">Génération groupé</a>
                             <a class="nav-link" href="{{ route('paies') }}">Liste paiements</a>
+                        </nav>
+                    </div>
+                    <a class="nav-link collapsed" href="javascript:void(0);" data-bs-toggle="collapse"
+                        data-bs-target="#pagesCollapseError7" aria-expanded="false" aria-controls="pagesCollapseError">
+                        <div class="nav-link-icon"><i data-feather="package"></i></div>
+                        INSTITUT BANQUAIRE
+                        <div class="sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                    </a>
+                    <div class="collapse" id="pagesCollapseError7" data-bs-parent="#accordionSidenavPagesMenu">
+                        <nav class="sidenav-menu-nested nav">
+                            <a class="nav-link" href="{{ route('gestion_institut_banquaire.index') }}">Gestion des banques</a>
                         </nav>
                     </div>
                     <a class="nav-link collapsed" href="javascript:void(0);" data-bs-toggle="collapse"

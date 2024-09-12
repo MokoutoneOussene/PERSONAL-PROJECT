@@ -14,33 +14,32 @@
         <div class="col-6">
             <div class="p-3" style="border: 2px solid black; background: rgb(216, 214, 214)">
                 <p>
-                    <strong>FASO FORAGE</strong> <br>
+                    <strong>WEST AFRICAN UNITED DRILLING</strong> <br>
+                    N° IFU : 00205993J <br>
                     12 BP OUA 12, OUAGADOUGOU <br>
-                    N° Ident fiscale : SM0225601P<br>
-                    N° Ident sociale : 8995200g36 <br>
+                    N° Ident fiscale : 1450671K<br>
                 </p>
             </div>
         </div>
-        <div class="col-6">
-            <div class="d-flex justify-content-end">
-                <h6>Fait à Ouagadougou le, {{ Carbon\Carbon::now()->format('d-m-Y') }}</h6>
-            </div>
-            <div class="d-flex justify-content-center m-5">
-                <h1 class="text-center m-3" style="text-decoration: underline"><strong>BULLETIN DE PAIE</strong></h1>
-            </div>
+        <div class="col-6 d-flex justify-content-center">
+            <img src="{{ asset('images/logo_west.png') }}" alt="logo" style="width: 70%">
         </div>
+    </div>
+
+    <div class="d-flex justify-content-between m-3">
+        <h1 class="text-center"><strong>BULLETIN DE PAIE N° {{ $finds->code }}</strong></h1>
+        <h6>Fait à Ouagadougou le, {{ Carbon\Carbon::now()->format('d-m-Y') }}</h6>
     </div>
 
     <div class="d-flex justify-content-between" style="width: 75%">
         <p>Période :</p>
         <p>DU {{ $finds->periode_paie }} <span>{{ $finds->annee_paie }}</span></p>
     </div>
-
     <div style="width: 100%; border: 2px solid rgb(12, 12, 12)">
-        <div class="p-2 mb-3" style="border-bottom: 1px solid rgb(12, 12, 12)">
+        <div class="p-2" style="border-bottom: 1px solid rgb(12, 12, 12)">
             <div class="row">
                 <div class="col-6">
-                    <p>Nom : </p>
+                    <p>Nom</p>
                 </div>
                 <div class="col-6">
                     <p>{{ $finds->Contrat->Agent->nom }} {{ $finds->Contrat->Agent->prenom }}</p>
@@ -48,7 +47,7 @@
             </div>
             <div class="row">
                 <div class="col-6">
-                    <p>Fonction : </p>
+                    <p>Fonction</p>
                 </div>
                 <div class="col-6">
                     <p>{{ $finds->Contrat->Agent->fonction }}</p>
@@ -56,7 +55,7 @@
             </div>
             <div class="row">
                 <div class="col-6">
-                    <p>Matricule : </p>
+                    <p>Matricule</p>
                 </div>
                 <div class="col-6">
                     <p>{{ $finds->Contrat->Agent->matricule }}</p>
@@ -64,7 +63,7 @@
             </div>
             <div class="row">
                 <div class="col-6">
-                    <p>Situation matrimoniale : </p>
+                    <p>Situation matrimoniale</p>
                 </div>
                 <div class="col-6">
                     <p>{{ $finds->Contrat->Agent->matrimoniale }}</p>
@@ -72,28 +71,34 @@
             </div>
             <div class="row">
                 <div class="col-6">
-                    <p>Nbr d'enfant : </p>
+                    <p>Nbr d'enfant</p>
                 </div>
                 <div class="col-6">
                     <p>{{ $finds->Contrat->Agent->nbre_enfant }}</p>
                 </div>
             </div>
-        </div>
-        <div class="p-2" style="border-bottom: 1px solid rgb(12, 12, 12); width: 75%">
-            <div class="row mb-3">
-                <div class="col-6">
-                    <p>Salaire de base : </p>
+        </div>        
+        <div class="p-2" style="border-bottom: 1px solid rgb(12, 12, 12); width: 100%">
+            <div class="row mb-2">
+                <div class="col-2">
+                    <p>100</p>
+                </div>
+                <div class="col-4">
+                    <p>Salaire de base</p>
                 </div>
                 <div class="col-3">
-                    <p>A</p>
+                    <p>({{ $finds->Contrat->base }} x {{ $finds->Contrat->taux }})</p>
                 </div>
                 <div class="col-3">
                     <p>{{ $finds->Contrat->sal_base }}</p>
                 </div>
             </div>
             <div class="row">
-                <div class="col-6">
-                    <p>Prime ancienneté : </p>
+                <div class="col-2">
+                    <p>140</p>
+                </div>
+                <div class="col-4">
+                    <p>Prime ancienneté</p>
                 </div>
                 <div class="col-3">
                     <p>-</p>
@@ -103,8 +108,11 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-6">
-                    <p>Indemnités de logement : </p>
+                <div class="col-2">
+                    <p>110</p>
+                </div>
+                <div class="col-4">
+                    <p>Indemnités de logement</p>
                 </div>
                 <div class="col-3">
                     <p>-</p>
@@ -114,8 +122,11 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-6">
-                    <p>Indemnités de transport : </p>
+                <div class="col-2">
+                    <p>120</p>
+                </div>
+                <div class="col-4">
+                    <p>Indemnités de transport</p>
                 </div>
                 <div class="col-3">
                     <p>-</p>
@@ -125,116 +136,25 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-6">
-                    <p>Prime divers : </p>
+                <div class="col-2">
+                    <p>130</p>
+                </div>
+                <div class="col-4">
+                    <p>Indemnités de fonction</p>
                 </div>
                 <div class="col-3">
                     <p>-</p>
                 </div>
                 <div class="col-3">
-                    <p>{{ $finds->Contrat->prime_divers }}</p>
+                    <p>{{ $finds->Contrat->prime_fonction }}</p>
                 </div>
             </div>
             <div class="row">
-                <div class="col-6">
-                    <strong>Total Indemnités : </strong>
+                <div class="col-2">
+                    <p>315</p>
                 </div>
-                <div class="col-3">
-                    <p>B</p>
-                </div>
-                <div class="col-3">
-                    <strong>{{ $finds->Contrat->total_indemnite }}</strong>
-                </div>
-            </div>
-        </div>
-        <div class="p-2 mb-3" style="border-bottom: 1px solid rgb(12, 12, 12); width: 75%">
-            <div class="row">
-                <div class="col-6">
-                    <strong>Salaire brut : </strong>
-                </div>
-                <div class="col-3">
-                    <p>C= A+B</p>
-                </div>
-                <div class="col-3">
-                    <strong>{{ $finds->Contrat->salaire_brut }}</strong>
-                </div>
-            </div>
-        </div>
-        <div class="p-2 mt-3" style="border-bottom: 1px solid rgb(12, 12, 12); width: 75%">
-            <div class="row">
-                <div class="col-6">
-                    <p>UITS : </p>
-                </div>
-                <div class="col-3">
-                    <p>-</p>
-                </div>
-                <div class="col-3">
-                    <p>{{ $finds->Contrat->uits }}</p>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-6">
-                    <p>Cotisation sociale : </p>
-                </div>
-                <div class="col-3">
-                    <p>-</p>
-                </div>
-                <div class="col-3">
-                    <p>{{ $finds->Contrat->cotisation_sociale }}</p>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-6">
-                    <p>Impot : </p>
-                </div>
-                <div class="col-3">
-                    <p>-</p>
-                </div>
-                <div class="col-3">
-                    <p>{{ $finds->Contrat->impot }}</p>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-6">
-                    <p>Mutuelle payée par l’employé : </p>
-                </div>
-                <div class="col-3">
-                    <p>-</p>
-                </div>
-                <div class="col-3">
-                    <p>{{ $finds->Contrat->mutuelle_payee }}</p>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-6">
-                    <strong>Total retenues sur salaire : </strong>
-                </div>
-                <div class="col-3">
-                    <p>D</p>
-                </div>
-                <div class="col-3">
-                    <strong>{{ $finds->Contrat->total_retenue }}</strong>
-                </div>
-            </div>
-        </div>
-        <div class="p-2 mb-3" style="width: 75%">
-            <div class="row">
-                <div class="col-6">
-                    <strong>Salaire net à payer : </strong>
-                </div>
-                <div class="col-3">
-                    <p>E= C-D</p>
-                </div>
-                <div class="col-3">
-                    <strong>{{ $finds->Contrat->sal_net }}</strong>
-                </div>
-            </div>
-        </div>
-        <div class="p-2 mb-3" style="border: 1px solid rgb(12, 12, 12); width: 75%">
-            <h5 class="mb-3"><strong>Charges suplementaire</strong></h5>
-            <div class="row">
-                <div class="col-6">
-                    <p>Charges occasionnelle : </p>
+                <div class="col-4">
+                    <p>Charges suplementaire</p>
                 </div>
                 <div class="col-3">
                     <p>-</p>
@@ -243,9 +163,55 @@
                     <p>{{ $finds->occasionnelle }}</p>
                 </div>
             </div>
+        </div>
+        <div class="p-2 mb-2" style="border-bottom: 1px solid rgb(12, 12, 12); width: 100%; background: rgb(216, 213, 213)">
             <div class="row">
                 <div class="col-6">
-                    <p>Charges précompte : </p>
+                    <strong>AVOIRS</strong>
+                </div>
+                <div class="col-3">
+                    <p></p>
+                </div>
+                <div class="col-3">
+                    <strong>{{ $finds->avoir }}</strong>
+                </div>
+            </div>
+        </div>
+        <div class="p-2" style="border-bottom: 1px solid rgb(12, 12, 12); width: 100%">
+            <div class="row">
+                <div class="col-2">
+                    <p>200</p>
+                </div>
+                <div class="col-4">
+                    <p>Retenue IUTS</p>
+                </div>
+                <div class="col-3">
+                    <p>-</p>
+                </div>
+                <div class="col-3">
+                    <p>{{ $finds->Contrat->iuts }}</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-2">
+                    <p>190</p>
+                </div>
+                <div class="col-4">
+                    <p>Retenue CNSS</p>
+                </div>
+                <div class="col-3">
+                    <p>-</p>
+                </div>
+                <div class="col-3">
+                    <p>{{ $finds->Contrat->cnss }}</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-2">
+                    <p>220</p>
+                </div>
+                <div class="col-4">
+                    <p>Retenues avances du mois</p>
                 </div>
                 <div class="col-3">
                     <p>-</p>
@@ -254,19 +220,60 @@
                     <p>{{ $finds->precompte }}</p>
                 </div>
             </div>
-        </div>
-        <div class="p-2 mb-3" style="border: 1px solid rgb(12, 12, 12); width: 75%">
             <div class="row">
-                <div class="col-6">
-                    <strong>Cout salarial total : </strong>
+                <div class="col-2">
+                    <p>330</p>
+                </div>
+                <div class="col-4">
+                    <p>Autres etenues</p>
                 </div>
                 <div class="col-3">
-                    <p>G= C+F</p>
+                    <p>-</p>
                 </div>
                 <div class="col-3">
-                    <strong>{{ $finds->salaire_total }}</strong>
+                    <p>{{ $finds->autres_retenu }}</p>
                 </div>
             </div>
+        </div>
+        <div class="p-2" style="width: 100%; background: rgb(216, 213, 213)">
+            <div class="row">
+                <div class="col-6">
+                    <strong>RETENUES</strong>
+                </div>
+                <div class="col-3">
+                    <p></p>
+                </div>
+                <div class="col-3">
+                    <strong>{{ $finds->retenu }}</strong>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="p-2 mt-3" style="border: 1px solid rgb(12, 12, 12); width: 100%; background: rgb(111, 109, 109)">
+        <div class="row text-light">
+            <div class="col-6">
+                <strong>NET A PAYER</strong>
+            </div>
+            <div class="col-3">
+                <p></p>
+            </div>
+            <div class="col-3">
+                <strong>{{ $finds->salaire_total }}</strong>
+            </div>
+        </div>
+    </div>
+    <div class="p-2 mt-3" style="border: 1px solid rgb(12, 12, 12);">
+        <div class="d-flex justify-content-between">
+            <h4>MODE DE REGLEMENT</h4>
+            <h4>{{ $finds->mode_paie }}</h4>
+        </div>
+        <div class="d-flex justify-content-between">
+            <h4>INSTITUTION FINANCIERE</h4>
+            <h4>{{ $finds->Banque->libelle }}</h4>
+        </div>
+        <div class="d-flex justify-content-between">
+            <h4>NUMERO DE COMPTE</h4>
+            <h4>{{ $finds->Banque->num_compte }}</h4>
         </div>
     </div>
     <div class="d-flex justify-content-between p-3">

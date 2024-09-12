@@ -37,13 +37,14 @@
                             <div class="row">
                                 <div class="col-4">
                                     <div class="row m-2" style="border: 2px solid rgb(48, 56, 126); border-radius: 5px;">
+                                        <input class="form-control" type="text" name="contrats_id" hidden />
                                         <div class="col-lg12 col-md-12 mt-3">
                                             <div class="mb-3">
                                                 <label>Date du paiement<span class="text-danger">*</span></label>
                                                 <input class="form-control" type="date" name="date" />
                                             </div>
                                         </div>
-                                        <div class="col-lg-12 col-md-12 mt-3">
+                                        <div class="col-lg-12 col-md-12">
                                             <div class="mb-3">
                                                 <label>Mode paie<span class="text-danger">*</span></label>
                                                 <select name="mode_paie" class="form-control">
@@ -82,6 +83,16 @@
                                                 </select>
                                             </div>
                                         </div>
+                                        <div class="col-lg-12 col-md-12">
+                                            <div class="mb-3">
+                                                <label>Institution banquaire<span class="text-danger">*</span></label>
+                                                <select name="istitut_banks_id" class="form-control">
+                                                    @foreach ($banques as $item)
+                                                        <option value="{{ $item->id }}">{{ $item->code }} - {{ $item->libelle }}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                        </div>
                                         <div class="mt-2 mb-2">
                                             <button type="submit" class="btn btn-success">Générer</button>
                                         </div>
@@ -93,9 +104,6 @@
                                             <tr>
                                                 <th>Matricule</th>
                                                 <th>Nom</th>
-                                                <th>Prénom</th>
-                                                <th>Sal base</th>
-                                                <th>Sal brut</th>
                                                 <th>Net a payer</th>
                                                 <th>Selectionner</th>
                                             </tr>
@@ -104,10 +112,7 @@
                                             @foreach ($collection as $item)
                                                 <tr>
                                                     <td>{{ $item->Agent->matricule }}</td>
-                                                    <td>{{ $item->Agent->nom }}</td>
-                                                    <td>{{ $item->Agent->prenom }}</td>
-                                                    <td>{{ $item->sal_base }}</td>
-                                                    <td>{{ $item->salaire_brut }}</td>
+                                                    <td>{{ $item->Agent->nom }} {{ $item->Agent->prenom }}</td>
                                                     <td>{{ $item->sal_net }}</td>
                                                     <td class="text-center">
                                                         <input class="form-check-input" type="checkbox" value="">

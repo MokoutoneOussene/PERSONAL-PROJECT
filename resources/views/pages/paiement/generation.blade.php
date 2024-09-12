@@ -96,20 +96,26 @@
                                     <li class="nav-item">
                                         <a class="nav-link active" id="custom-tabs-four-home-tab" data-toggle="pill"
                                             href="#custom-tabs-four-home" role="tab"
-                                            aria-controls="custom-tabs-four-home" aria-selected="true">Génération des
-                                            paiements</a>
+                                            aria-controls="custom-tabs-four-home" aria-selected="true">Génération des paiements
+                                        </a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link" id="custom-tabs-four-profile-tab" data-toggle="pill"
                                             href="#custom-tabs-four-profile" role="tab"
-                                            aria-controls="custom-tabs-four-profile" aria-selected="false">Charges
-                                            occasionnelles</a>
+                                            aria-controls="custom-tabs-four-profile" aria-selected="false">Charges occasionnelles
+                                        </a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link" id="custom-tabs-four-messages-tab" data-toggle="pill"
                                             href="#custom-tabs-four-messages" role="tab"
-                                            aria-controls="custom-tabs-four-messages" aria-selected="false">Charges
-                                            pré-compte</a>
+                                            aria-controls="custom-tabs-four-messages" aria-selected="false">Charges pré-compte
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="custom-tabs-four-setting-tab" data-toggle="pill"
+                                            href="#custom-tabs-four-setting" role="tab"
+                                            aria-controls="custom-tabs-four-setting" aria-selected="false">Autre retenues
+                                        </a>
                                     </li>
                                 </ul>
                             </div>
@@ -119,7 +125,7 @@
                                         aria-labelledby="custom-tabs-four-home-tab">
                                         <form method="POST" action="{{ route('gestion_paiement.store') }}">
                                             @csrf
-                                            <div class="row m-2"
+                                            <div class="row mb-2"
                                                 style="border: 2px solid rgb(48, 56, 126); border-radius: 5px;">
                                                 <div class="col-lg-6 col-md-12 mt-3">
                                                     <input class="form-control" type="text" name="contrats_id"
@@ -151,7 +157,8 @@
                                                             <option value="1er au 31 Juin">1er au 31 Juin</option>
                                                             <option value="1er au 30 Juillet">1er au 30 Juillet</option>
                                                             <option value="1er au 31 Aout">1er au 31 Aout</option>
-                                                            <option value="1er au 30 Septembre">1er au 30 Septembre</option>
+                                                            <option value="1er au 30 Septembre">1er au 30 Septembre
+                                                            </option>
                                                             <option value="1er au 31 Octobre">1er au 31 Octobre</option>
                                                             <option value="1er au 30 Novembre">1er au 30 Novembre</option>
                                                             <option value="1er au 31 Decembre">1er au 31 Decembre</option>
@@ -168,30 +175,43 @@
                                                         </select>
                                                     </div>
                                                 </div>
-                                                <div class="col-lg-6 col-md-12">
+                                                <div class="col-lg-12 col-md-12">
                                                     <div class="mb-3">
-                                                        <label>Occasionelle<span class="text-danger">*</span></label>
-                                                        @forelse ($occasionelle as $item)
-                                                            <input class="form-control" type="text" name="occasionnelle" value="{{ $item->montant }}" readonly />
-                                                        @empty
-                                                            <input class="form-control" type="text" name="occasionnelle" value="0" readonly />
-                                                        @endforelse
+                                                        <label>Institution banquaire<span
+                                                                class="text-danger">*</span></label>
+                                                        <select name="istitut_banks_id" class="form-control">
+                                                            @foreach ($collection as $item)
+                                                                <option value="{{ $item->id }}">{{ $item->code }} - {{ $item->libelle }}</option>
+                                                            @endforeach
+                                                        </select>
                                                     </div>
                                                 </div>
-                                                <div class="col-lg-6 col-md-12">
+                                                <div class="col-lg-4 col-md-12">
                                                     <div class="mb-3">
-                                                        <label>Pré-compte<span class="text-danger">*</span></label>
-                                                        @forelse ($precomptes as $item)
-                                                            <input class="form-control" type="text" name="precompte" value="{{ $item->retenu_mois }}" readonly />
-                                                        @empty
-                                                            <input class="form-control" type="text" name="precompte" value="0" readonly />
-                                                        @endforelse
+                                                        <label>Charges occasionelles<span class="text-danger">*</span></label>
+                                                        <input class="form-control" type="text" name="occasionnelle"
+                                                            value="{{ $total_occasionnelle }}" readonly />
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-4 col-md-12">
+                                                    <div class="mb-3">
+                                                        <label>Pré-comptes<span class="text-danger">*</span></label>
+                                                        <input class="form-control" type="text" name="precompte"
+                                                            value="{{ $total_precompte }}" readonly />
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-4 col-md-12">
+                                                    <div class="mb-3">
+                                                        <label>Autres charges<span class="text-danger">*</span></label>
+                                                        <input class="form-control" type="text" name="autres_retenu"
+                                                            value="{{ $total_retenues }}" readonly />
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="m-3">
-                                                <button type="submit" class="btn btn-success">Générer</button>
+                                            <div class="mt-3">
+                                                <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#formValidationBackdrop">Généerer le paiement</button>
                                             </div>
+                                            @include('require.validationModal')
                                         </form>
                                     </div>
                                     <div class="tab-pane fade" id="custom-tabs-four-profile" role="tabpanel"
@@ -222,7 +242,8 @@
                                                         <td>{{ $item->montant }}</td>
                                                         <td>{{ $item->statut }}</td>
                                                         <td>
-                                                            <a href="{{ route('gestion_occasionnelles.show', [$item->id]) }}">
+                                                            <a
+                                                                href="{{ route('gestion_occasionnelles.show', [$item->id]) }}">
                                                                 <i class="me-2 text-green text-center" data-feather="eye"></i>
                                                             </a>
                                                         </td>
@@ -268,6 +289,44 @@
                                             </tbody>
                                         </table>
                                     </div>
+                                    <div class="tab-pane fade" id="custom-tabs-four-setting" role="tabpanel"
+                                        aria-labelledby="custom-tabs-four-setting-tab">
+                                        <div class="page-header-subtitle mb-3">
+                                            <a class="btn btn-success" href="#" class="btn btn-success"
+                                                data-bs-toggle="modal" data-bs-target="#formContratBackdropRetenue">
+                                                Ajouter autres retenues
+                                            </a>
+                                        </div>
+                                        <table class="table table-bordered table-hover">
+                                            <thead>
+                                                <tr>
+                                                    <th>Date</th>
+                                                    <th>Code</th>
+                                                    <th>Libbelé</th>
+                                                    <th>Montant</th>
+                                                    <th>Statut</th>
+                                                    <th>Action</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach ($retenue_collection as $item)
+                                                    <tr>
+                                                        <td>{{ $item->created_at->format('d-m-Y') }}</td>
+                                                        <td>{{ $item->code }}</td>
+                                                        <td>{{ $item->libelle }}</td>
+                                                        <td>{{ $item->montant }}</td>
+                                                        <td>{{ $item->statut }}</td>
+                                                        <td>
+                                                            <a
+                                                                href="{{ route('gestion_occasionnelles.show', [$item->id]) }}">
+                                                                <i class="me-2 text-green text-center" data-feather="eye"></i>
+                                                            </a>
+                                                        </td>
+                                                    </tr>
+                                                @endforeach
+                                            </tbody>
+                                        </table>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -303,6 +362,12 @@
                                                 <div class="row">
                                                     <input class="form-control" type="text" name="contrats_id"
                                                         value="{{ $finds->id }}" hidden />
+                                                    <div class="col-lg-12 col-md-12">
+                                                        <div class="mb-3">
+                                                            <label>Code<span class="text-danger">*</span></label>
+                                                            <input class="form-control" type="text" name="code" />
+                                                        </div>
+                                                    </div>
                                                     <div class="col-lg-12 col-md-12">
                                                         <div class="mb-3">
                                                             <label>Libellé<span class="text-danger">*</span></label>
@@ -352,6 +417,78 @@
 
 
 
+    <!-- Modal -->
+    <div class="modal fade" id="formContratBackdropRetenue" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">Ajout d'autres retenues
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <!-- Tabbed dashboard card example-->
+                            <div class="card mb-4">
+                                <div class="card-body">
+                                    <div class="sbp-preview-content">
+                                        <form method="POST" action="{{ route('gestion_autres_retenues.store') }}">
+                                            @csrf
+                                            <div class="">
+                                                <div class="row">
+                                                    <input class="form-control" type="text" name="contrats_id"
+                                                        value="{{ $finds->id }}" hidden />
+                                                    <div class="col-lg-12 col-md-12">
+                                                        <div class="mb-3">
+                                                            <label>Code<span class="text-danger">*</span></label>
+                                                            <input class="form-control" type="text" name="code" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-12 col-md-12">
+                                                        <div class="mb-3">
+                                                            <label>Libellé<span class="text-danger">*</span></label>
+                                                            <input class="form-control" type="text" name="libelle" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-12 col-md-12">
+                                                        <div class="mb-3">
+                                                            <label>Montant <span class="text-danger">*</span></label>
+                                                            <input class="form-control" type="number" name="montant" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-lg-12 col-md-12">
+                                                        <div class="mb-3">
+                                                            <label>Statut</label>
+                                                            <select name="statut" class="form-control">
+                                                                <option value="En cours">En cours</option>
+                                                                <option value="Terminé">Terminé</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="mt-3">
+                                                    <button type="submit" class="btn btn-success">Enregistrer</button>
+                                                    <button type="button" class="btn btn-danger"
+                                                        data-bs-dismiss="modal">Fermer</button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
 
     <!-- Modal -->
     <div class="modal fade" id="formContratBackdropPrecompte" data-bs-backdrop="static" data-bs-keyboard="false"
@@ -374,7 +511,14 @@
                                             @csrf
                                             <div class="">
                                                 <div class="row">
-                                                    <input class="form-control" type="text" name="contrats_id" value="{{ $finds->id }}" hidden />
+                                                    <input class="form-control" type="text" name="contrats_id"
+                                                        value="{{ $finds->id }}" hidden />
+                                                    <div class="col-lg-4 col-md-12">
+                                                        <div class="mb-3">
+                                                            <label>Code<span class="text-danger">*</span></label>
+                                                            <input class="form-control" type="text" name="code" />
+                                                        </div>
+                                                    </div>
                                                     <div class="col-lg-4 col-md-12">
                                                         <div class="mb-3">
                                                             <label>Libellé<span class="text-danger">*</span></label>
@@ -385,10 +529,13 @@
                                                         <div class="mb-3">
                                                             <label>Montant initial<span
                                                                     class="text-danger">*</span></label>
-                                                            <input class="form-control" type="number" name="capital_initial" />
+                                                            <input class="form-control" type="number"
+                                                                name="capital_initial" />
                                                         </div>
                                                     </div>
-                                                    <div class="col-lg-4 col-md-12">
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-lg-3 col-md-12">
                                                         <div class="mb-3">
                                                             <label>Statut</label>
                                                             <select name="statut" class="form-control">
@@ -397,18 +544,18 @@
                                                             </select>
                                                         </div>
                                                     </div>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="col-lg-6 col-md-12">
+                                                    <div class="col-lg-3 col-md-12">
                                                         <div class="mb-3">
                                                             <label>Nbr d'echéance</label>
-                                                            <input class="form-control" type="number" name="nbr_echeance" />
+                                                            <input class="form-control" type="number"
+                                                                name="nbr_echeance" />
                                                         </div>
                                                     </div>
                                                     <div class="col-lg-3 col-md-12">
                                                         <div class="mb-3">
                                                             <label>Date debut</label>
-                                                            <input class="form-control" type="date" name="date_debut" />
+                                                            <input class="form-control" type="date"
+                                                                name="date_debut" />
                                                         </div>
                                                     </div>
                                                     <div class="col-lg-3 col-md-12">

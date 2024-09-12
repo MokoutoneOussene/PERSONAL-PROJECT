@@ -44,8 +44,7 @@
                                     <div class="card-body">
                                         <div class="sbp-preview-content">
                                             {{-- si un formulaire contient une image il faut ajouter enctype="multipart/form-data" --}}
-                                            <form method="POST" action="{{ route('gestion_contrat.store') }}"
-                                                enctype="multipart/form-data">
+                                            <form method="POST" action="{{ route('gestion_contrat.store') }}">
                                                 @csrf
                                                 <div class="p-2 m-1"
                                                     style="border: 2px solid rgb(242, 199, 174); border-radius: 5px;">
@@ -54,7 +53,6 @@
                                                     </h3>
                                                     <p class="mb-5">NB: les champs ayant des * en couleur rouge sont
                                                         obligatoires </p>
-
                                                     <div class="row">
                                                         <div class="col-lg-4 col-md-12">
                                                             <div class="mb-3">
@@ -90,7 +88,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="row">
-                                                        <div class="col-lg-4 col-md-12">
+                                                        <div class="col-lg-3 col-md-12">
                                                             <div class="mb-3">
                                                                 <label>Statut</label>
                                                                 <select name="statut" class="form-control">
@@ -99,61 +97,78 @@
                                                                 </select>
                                                             </div>
                                                         </div>
-                                                        <div class="col-lg-4 col-md-12">
+                                                        <div class="col-lg-3 col-md-12">
+                                                            <div class="mb-3">
+                                                                <label>Base<span class="text-danger">*</span></label>
+                                                                <input class="form-control" type="number" name="base" />
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-3 col-md-12">
+                                                            <div class="mb-3">
+                                                                <label>Taux<span class="text-danger">*</span></label>
+                                                                <input class="form-control" type="number" name="taux" />
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-3 col-md-12">
                                                             <div class="mb-3">
                                                                 <label>Salaire de base<span
                                                                         class="text-danger">*</span></label>
                                                                 <input class="form-control" type="number"
-                                                                    name="sal_base" />
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-4 col-md-12">
-                                                            <div class="mb-3">
-                                                                <label>Prime ancienneté<span
-                                                                        class="text-danger">*</span></label>
-                                                                <input class="form-control" type="number"
-                                                                    name="prime_anciennete" />
+                                                                    style="background: rgb(218, 216, 216)" readonly />
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="row">
+                                                    <div class="row m-2"
+                                                        style="border: 2px solid rgb(48, 56, 126); border-radius: 5px;">
+                                                        <h6 class="m-3 text-center text-danger">Indemnités supplémentaires
+                                                        </h6>
                                                         <div class="col-lg-3 col-md-12">
                                                             <div class="mb-3">
-                                                                <label>Prime logement</label>
-                                                                <input class="form-control" type="number"
-                                                                    name="prime_logement" />
+                                                                <label>Prime ancienneté</label>
+                                                                <input class="form-control" type="number" name="prime_anciennete" />
                                                             </div>
                                                         </div>
                                                         <div class="col-lg-3 col-md-12">
                                                             <div class="mb-3">
-                                                                <label>Prime transport<span
-                                                                        class="text-danger">*</span></label>
-                                                                <input class="form-control" type="number"
-                                                                    name="prime_transport" />
+                                                                <label>Indemnité de logement</label>
+                                                                <input class="form-control" type="number" name="prime_logement" />
                                                             </div>
                                                         </div>
                                                         <div class="col-lg-3 col-md-12">
                                                             <div class="mb-3">
-                                                                <label>Prime divers<span
-                                                                        class="text-danger">*</span></label>
-                                                                <input class="form-control" type="number"
-                                                                    name="prime_divers" />
+                                                                <label>Indemnité de transport</label>
+                                                                <input class="form-control" type="number" name="prime_transport" />
                                                             </div>
                                                         </div>
                                                         <div class="col-lg-3 col-md-12">
                                                             <div class="mb-3">
-                                                                <label>UITS<span class="text-danger">*</span></label>
-                                                                <input class="form-control" type="number"
-                                                                    name="uits" />
+                                                                <label>Indemnité de fonction</label>
+                                                                <input class="form-control" type="number" name="prime_fonction" />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row m-2"
+                                                        style="border: 2px solid rgb(48, 56, 126); border-radius: 5px;">
+                                                        <h6 class="m-3 text-center text-danger">Retenues sur salaire</h6>
+                                                        <div class="col-lg-6 col-md-12">
+                                                            <div class="mb-3">
+                                                                <label>Retenu IUTS</label>
+                                                                <input class="form-control" type="number" name="iuts" />
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-6 col-md-12">
+                                                            <div class="mb-3">
+                                                                <label>Retenu CNSS</label>
+                                                                <input class="form-control" type="number" name="cnss" readonly />
                                                             </div>
                                                         </div>
                                                     </div>
                                                     <div class="mt-3">
-                                                        <button type="submit"
-                                                            class="btn btn-success">Enregistrer</button>
-                                                        <button type="button" class="btn btn-danger"
-                                                            data-bs-dismiss="modal">Fermer</button>
+                                                        <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#formValidationBackdrop">Enregistrer</button>
+                                                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Fermer</button>
                                                     </div>
+                                                    @include('require.validationModal')
+                                                </div>
                                             </form>
                                         </div>
                                     </div>

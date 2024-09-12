@@ -26,6 +26,18 @@ class PersonnelController extends Controller
     }
 
     /**
+     * Show the form for creating a new resource.
+     */
+    public function perso_filter (Request $request)
+    {
+        $fonction = $request->fonction;
+
+        $collection = Personnel::where('fonction', '=', $fonction)->get();
+
+        return view('pages.personnel.liste', compact('collection'));
+    }
+
+    /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
@@ -62,7 +74,7 @@ class PersonnelController extends Controller
         ]);
 
         emotify('success', 'Agent ajouté avec success !');
-        return redirect()->back();
+        return redirect()->back()->with('message', 'Le personnel a été ajouté avec succès !');
     }
 
     /**

@@ -43,15 +43,24 @@
                             <form action="{{ route('date_filter') }}" method="GET">
                                 <div class="d-flex justify-content-end mb-3">
                                     <div class="col-3 m-2">
-                                        <label>Date debut</label>
-                                        <input class="form-control" name="date_debut" type="date" required />
-                                    </div>
-                                    <div class="col-3 m-2">
-                                        <label>Date fin</label>
-                                        <input class="form-control" name="date_fin" type="date" required />
+                                        <label>Periode paie</label>
+                                        <select name="periode_paie" class="form-control">
+                                            <option value="1er au 31 Janvier">1er au 31 Janvier</option>
+                                            <option value="1er au 29 Févier">1er au 29 Févier</option>
+                                            <option value="1er au 30 Mars">1er au 30 Mars</option>
+                                            <option value="1er au 31 Avril">1er au 31 Avril</option>
+                                            <option value="1er au 30 Mai">1er au 30 Mai</option>
+                                            <option value="1er au 31 Juin">1er au 31 Juin</option>
+                                            <option value="1er au 30 Juillet">1er au 30 Juillet</option>
+                                            <option value="1er au 31 Aout">1er au 31 Aout</option>
+                                            <option value="1er au 30 Septembre">1er au 30 Septembre</option>
+                                            <option value="1er au 31 Octobre">1er au 31 Octobre</option>
+                                            <option value="1er au 30 Novembre">1er au 30 Novembre</option>
+                                            <option value="1er au 31 Decembre">1er au 31 Decembre</option>
+                                        </select>
                                     </div>
                                     <div class="col-1 m-2 pt-4">
-                                        <button type="submit" class="btn btn-success">Filtrer</button>
+                                        <button type="submit" class="btn btn-success">Actualiser</button>
                                     </div>
                                 </div>
                             </form>

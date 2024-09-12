@@ -11,12 +11,6 @@
                             <div class="page-header-icon"><i data-feather="activity"></i></div>
                             LISTE DES AGENTS A PAYER
                         </h1>
-                        <div class="page-header-subtitle mt-3">
-                            <a class="btn btn-success" href="#" class="btn btn-success" data-bs-toggle="modal"
-                                data-bs-target="#formContratBackdrop">
-                                Effectuer les paiements des agents
-                            </a>
-                        </div>
                     </div>
                     <div class="col-12 col-xl-auto mt-4">
                         <div class="input-group input-group-joined border-0" style="width: 16.5rem">
@@ -39,9 +33,6 @@
                 <div class="card mb-4">
                     <div class="card-body">
                         <table id="datatablesSimple">
-                            <button class="btn btn-success mt-3 mb-3">
-                                Générer les paiements
-                            </button>    
                             <thead>
                                 <tr>
                                     <th>Matricule</th>
@@ -51,7 +42,6 @@
                                     <th>Sal brut</th>
                                     <th>Net a payer</th>
                                     <th>Génération</th>
-                                    <th>Selectionner</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -64,12 +54,9 @@
                                         <td>{{ $item->salaire_brut }}</td>
                                         <td>{{ $item->sal_net }}</td>
                                         <td>
-                                            <a href="{{ url('generation_paiement/' . $item->id) }}">
-                                                <i class="me-2 text-green text-center" data-feather="eye"></i>
+                                            <a href="{{ url('generation_paiement/' . $item->id) }}" class="text-center">
+                                                <i class="me-2 text-green" data-feather="eye"></i>
                                             </a>
-                                        </td>
-                                        <td class="text-center">
-                                            <input class="form-check-input" type="checkbox" value="">
                                         </td>
                                     </tr>
                                 @endforeach

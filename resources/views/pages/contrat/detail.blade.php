@@ -113,26 +113,20 @@
                         </div>
                         <table style="width: 100%;">
                             <tr class="border_dotted">
-                                <th class="text-danger">Salaire de base</th>
-                                <td class="text-danger">{{ $finds->sal_base }} fcfa</td>
-                            </tr>
-                        </table>
-                        <table style="width: 100%;">
-                            <tr class="border_dotted">
                                 <th>Prime ancienneté</th>
                                 <td>{{ $finds->prime_anciennete }} fcfa</td>
                             </tr>
                             <tr class="border_dotted">
-                                <th>Prime logement</th>
+                                <th>Indemnité de logement</th>
                                 <td>{{ $finds->prime_logement }} fcfa</td>
                             </tr>
                             <tr class="border_dotted">
-                                <th>Prime transport</th>
+                                <th>Indemnité de transport</th>
                                 <td>{{ $finds->prime_transport }} fcfa</td>
                             </tr>
                             <tr class="border_dotted">
-                                <th>Prime divers</th>
-                                <td>{{ $finds->prime_divers }} fcfa</td>
+                                <th>Indemnité de fonction</th>
+                                <td>{{ $finds->prime_fonction }} fcfa</td>
                             </tr>
                             <tr class="border_dotted">
                                 <th class="text-danger">Total Indemnités supplémentaires</th>
@@ -153,24 +147,12 @@
                         </div>
                         <table style="width: 100%;">
                             <tr class="border_dotted">
-                                <th>UITS</th>
-                                <td>{{ $finds->uits }} fcfa</td>
+                                <th>IUTS</th>
+                                <td>{{ $finds->iuts }} fcfa</td>
                             </tr>
                             <tr class="border_dotted">
-                                <th>Cotisations sociales salarié</th>
-                                <td>{{ $finds->cotisation_sociale }} fcfa</td>
-                            </tr>
-                            <tr class="border_dotted">
-                                <th>Impôts</th>
-                                <td>{{ $finds->impot }} fcfa</td>
-                            </tr>
-                            <tr class="border_dotted">
-                                <th>Avance / prêt reçu</th>
-                                <td>{{ $finds->avance_pret }} fcfa</td>
-                            </tr>
-                            <tr class="border_dotted">
-                                <th>Mutuelle payée par l’employé</th>
-                                <td>{{ $finds->mutuelle_payee }} fcfa</td>
+                                <th>CNSS</th>
+                                <td>{{ $finds->cnss }} fcfa</td>
                             </tr>
                             <tr class="border_dotted">
                                 <th class="text-danger">Total retenues sur salaire</th>

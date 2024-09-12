@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\AutresRetenu;
 use App\Models\Contrat;
+use App\Models\IstitutBank;
 use App\Models\Occasionnelle;
 use App\Models\Paiement;
 use App\Models\Precompte;
@@ -46,7 +48,7 @@ class PaiementController extends Controller
         Paiement::create($request->all());
 
         emotify('success', 'Paiement effectué avec success !');
-        return redirect()->route('gestion_paiement.index');
+        return redirect()->route('gestion_paiement.index')->with('message', 'Paiement effectué avec success !');
     }
 
     /**
@@ -66,11 +68,23 @@ class PaiementController extends Controller
         $finds = Contrat::find($id);
         $occasionelle = Occasionnelle::where('contrats_id', '=', $id)->where('statut', '=', 'En Cours')->get();
         $precomptes = Precompte::where('contrats_id', '=', $id)->where('statut', '=', 'En Cours')->get();
+        $autres_retenue = AutresRetenu::where('contrats_id', '=', $id)->where('statut', '=', 'En Cours')->get();
 
         $occasionelle_collection = Occasionnelle::where('contrats_id', '=', $id)->get();
         $precomptes_collection = Precompte::where('contrats_id', '=', $id)->get();
+        $retenue_collection = AutresRetenu::where('contrats_id', '=', $id)->get();
 
-        return view('pages.paiement.generation', compact('finds', 'occasionelle', 'precomptes', 'occasionelle_collection', 'precomptes_collection'));
+        $collection = IstitutBank::latest()->get();
+
+        $total_occasionnelle = $occasionelle->sum('montant');
+        $total_precompte = $precomptes->sum('retenu_mois');
+        $total_retenues = $autres_retenue->sum('montant');
+
+        return view(
+            'pages.paiement.generation', compact(
+                'finds', 'occasionelle_collection', 'precomptes_collection', 'retenue_collection', 'total_occasionnelle', 'total_precompte', 'collection', 'total_retenues'
+            )
+        );
     }
 
     /**
@@ -79,7 +93,8 @@ class PaiementController extends Controller
     public function Gener_groupe()
     {
         $collection = Contrat::latest()->get();
-        return view('pages.paiement.generation_groupe', compact('collection'));
+        $banques = IstitutBank::latest()->get();
+        return view('pages.paiement.generation_groupe', compact('collection', 'banques'));
     }
 
     /**
@@ -96,10 +111,9 @@ class PaiementController extends Controller
      */
     public function date_filter(Request $request)
     {
-        $date_debut = $request->date_debut;
-        $date_fin = $request->date_fin;
+        $periode_paie = $request->periode_paie;
 
-        $collection = Paiement::whereDate('created_at', '>=', $date_debut)->whereDate('created_at', '<=', $date_fin)->get();
+        $collection = Paiement::where('periode_paie', '=', $periode_paie)->get();
         $total = $collection->sum('salaire_total');
 
         return view('pages.paiement.liste_paie', compact('collection', 'total'));

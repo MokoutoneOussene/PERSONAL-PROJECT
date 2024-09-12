@@ -22,7 +22,7 @@
                     </div>
                     <div class="card-body">
                         <div class="d-flex justify-content-center">
-                            <img class="img-fluid" src="{{ asset('images/undraw_Newspaper_re_syf5.png') }}" alt="logo"
+                            <img class="img-fluid" src="{{ asset('images/logo_west.png') }}" alt="logo"
                                 style="width: 40%">
                         </div>
                         <form action="{{ route('login') }}" method="POST">

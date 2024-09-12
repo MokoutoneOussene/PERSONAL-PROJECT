@@ -3,17 +3,18 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Models\Precompte;
+use App\Models\IstitutBank;
 use Illuminate\Http\Request;
 
-class PrecompteController extends Controller
+class InstitutBankController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
+        $collection = IstitutBank::latest()->get();
+        return view('pages.institut_bank.institut_bank', compact('collection'));
     }
 
     /**
@@ -29,10 +30,10 @@ class PrecompteController extends Controller
      */
     public function store(Request $request)
     {
-        Precompte::create($request->all());
+        IstitutBank::create($request->all());
 
-        emotify('success', 'Charge de pré-compte effectué avec success !');
-        return redirect()->back()->with('message', 'Charge de pré-compte effectué avec success !');
+        emotify('success', 'Institut banquaire enregistrée avec success !');
+        return redirect()->back()->with('message', 'Institut banquaire enregistrée avec success !');
     }
 
     /**
@@ -40,8 +41,7 @@ class PrecompteController extends Controller
      */
     public function show(string $id)
     {
-        $finds = Precompte::find($id);
-        return view('pages.generation.detail_precompte', compact('finds'));
+        //
     }
 
     /**

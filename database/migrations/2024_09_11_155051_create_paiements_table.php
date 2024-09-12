@@ -21,10 +21,15 @@ return new class extends Migration
 
             $table->decimal('occasionnelle')->nullable();
             $table->decimal('precompte')->nullable();
+            $table->decimal('autres_retenu')->nullable();
 
+            $table->decimal('avoir')->nullable();
+            $table->decimal('retenu')->nullable();
+            
             $table->decimal('salaire_total')->nullable();
             
             $table->foreignId('contrats_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('istitut_banks_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
         });
     }
