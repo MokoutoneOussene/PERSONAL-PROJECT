@@ -31,10 +31,8 @@ return new class extends Migration
             $table->string('lieunais')->nullable();
             $table->string('province')->nullable();
             $table->string('matrimoniale')->nullable();
-            $table->date('date_resiliation')->nullable();
             $table->string('fonction')->nullable();
             $table->string('email')->nullable();
-            $table->string('contrat')->nullable();
             $table->string('num_cnib')->nullable();
             $table->date('date_cnib');
             $table->string('lieu_cnib');

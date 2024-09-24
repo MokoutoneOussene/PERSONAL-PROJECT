@@ -93,13 +93,12 @@
                                         <div class="modal-header">
                                             <h5 class="modal-title" id="missionDetailsModalLabel{{ $item->id }}">
                                                 Détails de la mission: {{ $item->lib }}</h5>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                aria-label="Close"></button>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                         </div>
                                         <div class="modal-body">
                                             <div class="row">
                                                 <div class="col-md-6">
-                                                    <h6 class="text-center"><strong class="text-danger">Information de la mission:</strong></h6>
+                                                    <h6 class="text-center m-3"><strong class="text-danger">Information de la mission:</strong></h6>
                                                     <table class="table table-striped table-bordered" style="width: 100%;">
                                                         <tr>
                                                             <th>Code</th>
@@ -132,7 +131,7 @@
                                                     </table>
                                                 </div>
                                                 <div class="col-md-6">
-                                                    <h6 class="text-center"><strong class="text-danger">Personnels associés:</strong></h6>
+                                                    <h6 class="text-center m-3"><strong class="text-danger">Personnels associés:</strong></h6>
                                                     <ul>
                                                         @foreach ($item->personnels as $personnel)
                                                                 <table class="table table-striped table-bordered" style="width: 100%;">
@@ -149,14 +148,12 @@
                                                     </ul>
                                                 </div>
                                             </div>
-
                                             <!-- Ajouter ici d'autres champs pertinents si nécessaire -->
                                         </div>
                                         <div class="modal-footer">
                                             <div class="mt-3">
                                                 <button type="button" class="btn btn-success">Fiche de la mission</button>
-                                                <button type="button" class="btn btn-danger"
-                                                    data-bs-dismiss="modal">Fermer</button>
+                                                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Fermer</button>
                                             </div>
                                         </div>
                                     </div>

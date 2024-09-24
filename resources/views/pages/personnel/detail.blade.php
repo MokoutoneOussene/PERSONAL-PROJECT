@@ -48,7 +48,7 @@
                                     @endif
                                 </div>
                                 <!-- Profile picture help block-->
-                                <div class="small font-italic text-muted mb-4 text-center">Matricle : {{ $finds->matricule }}</div>
+                                <div class="small font-italic text-muted mb-4 text-center">Matricule : {{ $finds->matricule }}</div>
                                 <!-- Profile picture upload button-->
                                 <div class="d-flex justify-content-center">
                                     <button class="btn btn-primary" type="button" data-bs-toggle="modal"
@@ -91,192 +91,80 @@
                 <div class="card mb-4">
                     <div class="card-header">Detail de l'agent</div>
                     <div class="card-body">
-                        <form>
-                            <!-- Form Row-->
-                            <div class="row">
-                                <div class="col-lg-4 col-md-12">
-                                    <div class="mb-3">
-                                        <label>N° sécurité sociale</label>
-                                        <input class="form-control" type="text" value="{{ $finds->num_secu_social }}"
-                                            readonly />
-                                    </div>
-                                </div>
-                                <div class="col-lg-4 col-md-12">
-                                    <div class="mb-3">
-                                        <label>Nom</label>
-                                        <input class="form-control" type="text" value="{{ $finds->nom }}" readonly />
-                                    </div>
-                                </div>
-                                <div class="col-lg-4 col-md-12">
-                                    <div class="mb-3">
-                                        <label>Prénoms</label>
-                                        <input class="form-control" type="text" value="{{ $finds->prenom }}" readonly />
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-
-                                <div class="col-lg-4 col-md-12">
-                                    <div class="mb-3">
-                                        <label>Date de maissance</label>
-                                        <input class="form-control" type="date" value="{{ $finds->date_nais }}"
-                                            readonly />
-                                    </div>
-                                </div>
-                                <div class="col-lg-4 col-md-12">
-                                    <div class="mb-3">
-                                        <label>Genre</label>
-                                        <input class="form-control" type="text" value="{{ $finds->genre }}" readonly />
-                                    </div>
-                                </div>
-                                <div class="col-lg-4 col-md-12">
-                                    <div class="mb-3">
-                                        <label>Résidence</label>
-                                        <input class="form-control" type="text" value="{{ $finds->residence }}"
-                                            readonly />
-                                    </div>
-                                </div>
-                                <div class="col-lg-4 col-md-12">
-                                    <div class="mb-3">
-                                        <label>Date d'embauche</label>
-                                        <input class="form-control" type="date" value="{{ $finds->date_embauche }}"
-                                            readonly />
-                                    </div>
-                                </div>
-                                <div class="col-lg-4 col-md-12">
-                                    <div class="mb-3">
-                                        <label>Catégorie</label>
-                                        <input class="form-control" type="text" value="{{ $finds->categorie }}"
-                                            readonly />
-                                    </div>
-                                </div>
-                                <div class="col-lg-4 col-md-12">
-                                    <div class="mb-3">
-                                        <label>Téléphone</label>
-                                        <input class="form-control" type="number" value="{{ $finds->telephone }}"
-                                            readonly />
-                                    </div>
-                                </div>
-                                <div class="col-lg-4 col-md-12">
-                                    <div class="mb-3">
-                                        <label>Groupe sanguin</label>
-                                        <input class="form-control" type="text" value="{{ $finds->grou_sang }}"
-                                            readonly />
-                                    </div>
-                                </div>
-                                <div class="col-lg-4 col-md-12">
-                                    <div class="mb-3">
-                                        <label>Père</label>
-                                        <input class="form-control" type="text" value="{{ $finds->pere }}"
-                                            readonly />
-                                    </div>
-                                </div>
-                                <div class="col-lg-4 col-md-12">
-                                    <div class="mb-3">
-                                        <label>Mère</label>
-                                        <input class="form-control" type="text" value="{{ $finds->mere }}"
-                                            readonly />
-                                    </div>
-                                </div>
-                                <div class="col-lg-4 col-md-12">
-                                    <div class="mb-3">
-                                        <label>Personne à prévenir</label>
-                                        <input class="form-control" type="text" value="{{ $finds->perso_prevenir }}"
-                                            readonly />
-                                    </div>
-                                </div>
-                                <div class="col-lg-4 col-md-12">
-                                    <div class="mb-3">
-                                        <label>Tel PP</label>
-                                        <input class="form-control" type="number"
-                                            value="{{ $finds->tele_perso_prevenir }}" readonly />
-                                    </div>
-                                </div>
-                                <div class="col-lg-4 col-md-12">
-                                    <div class="mb-3">
-                                        <label>Lieu de naissance</label>
-                                        <input class="form-control" type="text" value="{{ $finds->lieunais }}"
-                                            readonly />
-                                    </div>
-                                </div>
-                                <div class="col-lg-4 col-md-12">
-                                    <div class="mb-3">
-                                        <label>Province</label>
-                                        <input class="form-control" type="text" value="{{ $finds->province }}"
-                                            readonly />
-                                    </div>
-                                </div>
-                                <div class="col-lg-4 col-md-12">
-                                    <div class="mb-3">
-                                        <label>Matrimoniale</label>
-                                        <input class="form-control" type="text" value="{{ $finds->matrimoniale }}"
-                                            readonly />
-                                    </div>
-                                </div>
-                                <div class="col-lg-4 col-md-12">
-                                    <div class="mb-3">
-                                        <label>Date résiliation contrat</label>
-                                        <input class="form-control" type="date"
-                                            value="{{ $finds->date_resiliation }}" readonly />
-                                    </div>
-                                </div>
-                                <div class="col-lg-4 col-md-12">
-                                    <div class="mb-3">
-                                        <label>Fonction</label>
-                                        <input class="form-control" type="text" value="{{ $finds->fonction }}"
-                                            readonly />
-                                    </div>
-                                </div>
-                                <div class="col-lg-4 col-md-12">
-                                    <div class="mb-3">
-                                        <label>Email</label>
-                                        <input class="form-control" type="email" value="{{ $finds->email }}"
-                                            readonly />
-                                    </div>
-                                </div>
-                                <div class="col-lg-4 col-md-12">
-                                    <div class="mb-3">
-                                        <label>Contrat</label>
-                                        <input class="form-control" type="text" value="{{ $finds->contrat }}"
-                                            readonly />
-                                    </div>
-                                </div>
-                                <div class="col-lg-4 col-md-12">
-                                    <div class="mb-3">
-                                        <label>N° CNIB ou Passport</label>
-                                        <input class="form-control" type="text" value="{{ $finds->num_cnib }}"
-                                            readonly />
-                                    </div>
-                                </div>
-                                <div class="col-lg-4 col-md-12">
-                                    <div class="mb-3">
-                                        <label>Date d'établissement</label>
-                                        <input class="form-control" type="date" value="{{ $finds->date_cnib }}"
-                                            readonly />
-                                    </div>
-                                </div>
-                                <div class="col-lg-4 col-md-12">
-                                    <div class="mb-3">
-                                        <label>Lieu d'établissement</label>
-                                        <input class="form-control" type="text" value="{{ $finds->lieu_cnib }}"
-                                            readonly />
-                                    </div>
-                                </div>
-                                <div class="col-lg-4 col-md-12">
-                                    <div class="mb-3">
-                                        <label>Nbre enfants</label>
-                                        <input class="form-control" type="number" value="{{ $finds->nbre_enfant }}"
-                                            readonly />
-                                    </div>
-                                </div>
-                                <div class="col-lg-4 col-md-12">
-                                    <div class="mb-3">
-                                        <label>Charge UITS</label>
-                                        <input class="form-control" type="text" value="{{ $finds->charge_uts }}"
-                                            readonly />
-                                    </div>
-                                </div>
-                        </form>
+                        <table style="width: 100%;">
+                            <tr class="border_dotted">
+                                <th>N° securité sociale</th>
+                                <td>{{ $finds->num_secu_social }}</td>
+                            </tr>
+                            <tr class="border_dotted">
+                                <th>Nom</th>
+                                <td>{{ $finds->nom }} {{ $finds->prenom }}</td>
+                            </tr>
+                            <tr class="border_dotted">
+                                <th>N° CNIB</th>
+                                <td>{{ $finds->num_cnib }} du {{ $finds->date_cnib }} à {{ $finds->lieu_cnib }}</td>
+                            </tr>
+                            <tr class="border_dotted">
+                                <th>Date et lieu de naissance</th>
+                                <td>{{ $finds->date_nais }} à {{ $finds->lieunais }}</td>
+                            </tr>
+                            <tr class="border_dotted">
+                                <th>Province</th>
+                                <td>{{ $finds->province }}</td>
+                            </tr>
+                            <tr class="border_dotted">
+                                <th>Telephone</th>
+                                <td>{{ $finds->telephone }}</td>
+                            </tr>
+                            <tr class="border_dotted">
+                                <th>Email</th>
+                                <td>{{ $finds->email }}</td>
+                            </tr>
+                            <tr class="border_dotted">
+                                <th>Categorie</th>
+                                <td>{{ $finds->categorie }}</td>
+                            </tr>
+                            <tr class="border_dotted">
+                                <th>Sexe</th>
+                                <td>{{ $finds->genre }}</td>
+                            </tr>
+                            <tr class="border_dotted">
+                                <th>Residence</th>
+                                <td>{{ $finds->residence }}</td>
+                            </tr>
+                            <tr class="border_dotted">
+                                <th>Date d'embauche</th>
+                                <td>{{ $finds->date_embauche }}</td>
+                            </tr>
+                            <tr class="border_dotted">
+                                <th>Groupe sanguin</th>
+                                <td>{{ $finds->grou_sang }}</td>
+                            </tr>
+                            <tr class="border_dotted">
+                                <th>Pere & mère</th>
+                                <td>{{ $finds->pere }} et de {{ $finds->mere }}</td>
+                            </tr>
+                            <tr class="border_dotted">
+                                <th>Personne à prévenir</th>
+                                <td>{{ $finds->perso_prevenir }} / {{ $finds->tele_perso_prevenir }}</td>
+                            </tr>
+                            <tr class="border_dotted">
+                                <th>Situation matrimoniale</th>
+                                <td>{{ $finds->matrimoniale }}</td>
+                            </tr>
+                            <tr class="border_dotted">
+                                <th>Fonction</th>
+                                <td>{{ $finds->fonction }}</td>
+                            </tr>
+                            <tr class="border_dotted">
+                                <th>Nombre d'enfant</th>
+                                <td>{{ $finds->nbre_enfant }}</td>
+                            </tr>
+                            <tr class="border_dotted">
+                                <th>Charge IUTS</th>
+                                <td>{{ $finds->charge_uts }}</td>
+                            </tr>
+                        </table>
                     </div>
                 </div>
             </div>

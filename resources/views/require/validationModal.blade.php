@@ -9,7 +9,7 @@
             </div>
             <div class="modal-body bg-success">
                 <!-- Tabbed dashboard card example-->
-                <p class="mb-5 text-light">Voulez vous vraiment le formulaire ?</p>
+                <p class="mb-5 text-light">Voulez vous vraiment valider le formulaire ?</p>
                 <div class="mt-1">
                     <button type="submit" class="btn btn-warning">Valider</button>
                     <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Fermer</button>

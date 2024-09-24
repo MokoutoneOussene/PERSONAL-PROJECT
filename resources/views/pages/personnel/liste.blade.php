@@ -67,7 +67,6 @@
                                 <tr>
                                     <th>Matricule</th>
                                     <th>Nom</th>
-                                    <th>Prénom(s)</th>
                                     <th>Genre</th>
                                     <th>Catégorie</th>
                                     <th>date embauche</th>
@@ -80,8 +79,7 @@
                                 @foreach ($collection as $item)
                                     <tr>
                                         <td>{{ $item->matricule }}</td>
-                                        <td>{{ $item->nom }}</td>
-                                        <td>{{ $item->prenom }}</td>
+                                        <td>{{ $item->nom }} {{ $item->prenom }}</td>
                                         <td>{{ $item->genre }}</td>
                                         <td>{{ $item->categorie }}</td>
                                         <td>{{ $item->date_embauche }}</td>
@@ -161,6 +159,12 @@
                                                     </div>
                                                     <div class="col-lg-4 col-md-12">
                                                         <div class="mb-3">
+                                                            <label>Lieu de naissance</label>
+                                                            <input class="form-control" type="text" name="lieunais" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-4 col-md-12">
+                                                        <div class="mb-3">
                                                             <label>Sexe</label>
                                                             <select name="genre" class="form-control">
                                                                 <option value="Masculin">Masculin</option>
@@ -176,7 +180,7 @@
                                                     </div>
                                                     <div class="col-lg-4 col-md-12">
                                                         <div class="mb-3">
-                                                            <label>Date d'embauche <span class="text-danger">*</span></label>
+                                                            <label>Date d'embauche<span class="text-danger">*</span></label>
                                                             <input class="form-control" type="date" name="date_embauche" />
                                                         </div>
                                                     </div>
@@ -226,14 +230,8 @@
                                                     </div>
                                                     <div class="col-lg-4 col-md-12">
                                                         <div class="mb-3">
-                                                            <label>Tel PP</label>
+                                                            <label>Tel Personne à prévenir</label>
                                                             <input class="form-control" type="number" name="tele_perso_prevenir" />
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-4 col-md-12">
-                                                        <div class="mb-3">
-                                                            <label>Lieu de naissance</label>
-                                                            <input class="form-control" type="text" name="lieunais" />
                                                         </div>
                                                     </div>
                                                     <div class="col-lg-4 col-md-12">
@@ -244,14 +242,8 @@
                                                     </div>
                                                     <div class="col-lg-4 col-md-12">
                                                         <div class="mb-3">
-                                                            <label>Matrimoniale</label>
+                                                            <label>Situation atrimoniale</label>
                                                             <input class="form-control" type="text" name="matrimoniale" />
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-4 col-md-12">
-                                                        <div class="mb-3">
-                                                            <label>Date résiliation contrat</label>
-                                                            <input class="form-control" type="date" name="date_resiliation" />
                                                         </div>
                                                     </div>
                                                     <div class="col-lg-4 col-md-12">
@@ -274,12 +266,6 @@
                                                         <div class="mb-3">
                                                             <label>Email</label>
                                                             <input class="form-control" type="email" name="email" />
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-4 col-md-12">
-                                                        <div class="mb-3">
-                                                            <label>Contrat</label>
-                                                            <input class="form-control" type="text" name="contrat" />
                                                         </div>
                                                     </div>
                                                     <div class="col-lg-4 col-md-12">
@@ -312,7 +298,7 @@
                                                             <input class="form-control" type="text" name="charge_uts" />
                                                         </div>
                                                     </div>
-                                                    <div class="col-lg-4 col-md-12">
+                                                    <div class="col-lg-12 col-md-12">
                                                         <div class="mb-3">
                                                             <label>Photo</label>
                                                             <input class="form-control" type="file" name="photo" required />
