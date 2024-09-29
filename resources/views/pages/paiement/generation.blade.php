@@ -94,13 +94,7 @@
                             <div class="card-header p-0 border-bottom-0">
                                 <ul class="nav nav-tabs" id="custom-tabs-four-tab" role="tablist">
                                     <li class="nav-item">
-                                        <a class="nav-link active" id="custom-tabs-four-home-tab" data-toggle="pill"
-                                            href="#custom-tabs-four-home" role="tab"
-                                            aria-controls="custom-tabs-four-home" aria-selected="true">Génération des paiements
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" id="custom-tabs-four-profile-tab" data-toggle="pill"
+                                        <a class="nav-link active" id="custom-tabs-four-profile-tab" data-toggle="pill"
                                             href="#custom-tabs-four-profile" role="tab"
                                             aria-controls="custom-tabs-four-profile" aria-selected="false">Charges occasionnelles
                                         </a>
@@ -121,100 +115,7 @@
                             </div>
                             <div class="card-body">
                                 <div class="tab-content" id="custom-tabs-four-tabContent">
-                                    <div class="tab-pane fade show active" id="custom-tabs-four-home" role="tabpanel"
-                                        aria-labelledby="custom-tabs-four-home-tab">
-                                        <form method="POST" action="{{ route('gestion_paiement.store') }}">
-                                            @csrf
-                                            <div class="row mb-2"
-                                                style="border: 2px solid rgb(48, 56, 126); border-radius: 5px;">
-                                                <div class="col-lg-6 col-md-12 mt-3">
-                                                    <input class="form-control" type="text" name="contrats_id"
-                                                        value="{{ $finds->id }}" hidden />
-                                                    <div class="mb-3">
-                                                        <label>Date du paiement<span class="text-danger">*</span></label>
-                                                        <input class="form-control" type="date" name="date" />
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-6 col-md-12 mt-3">
-                                                    <div class="mb-3">
-                                                        <label>Mode paie<span class="text-danger">*</span></label>
-                                                        <select name="mode_paie" class="form-control">
-                                                            <option value="Cheque">Cheque</option>
-                                                            <option value="Virement">Virement</option>
-                                                            <option value="Espece">Espece</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-6 col-md-12">
-                                                    <div class="mb-3">
-                                                        <label>Période<span class="text-danger">*</span></label>
-                                                        <select name="periode_paie" class="form-control">
-                                                            <option value="1er au 31 Janvier">1er au 31 Janvier</option>
-                                                            <option value="1er au 29 Févier">1er au 29 Févier</option>
-                                                            <option value="1er au 30 Mars">1er au 30 Mars</option>
-                                                            <option value="1er au 31 Avril">1er au 31 Avril</option>
-                                                            <option value="1er au 30 Mai">1er au 30 Mai</option>
-                                                            <option value="1er au 31 Juin">1er au 31 Juin</option>
-                                                            <option value="1er au 30 Juillet">1er au 30 Juillet</option>
-                                                            <option value="1er au 31 Aout">1er au 31 Aout</option>
-                                                            <option value="1er au 30 Septembre">1er au 30 Septembre
-                                                            </option>
-                                                            <option value="1er au 31 Octobre">1er au 31 Octobre</option>
-                                                            <option value="1er au 30 Novembre">1er au 30 Novembre</option>
-                                                            <option value="1er au 31 Decembre">1er au 31 Decembre</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-6 col-md-12">
-                                                    <div class="mb-3">
-                                                        <label>Année<span class="text-danger">*</span></label>
-                                                        <select name="annee_paie" class="form-control">
-                                                            <option value="2024">2024</option>
-                                                            <option value="2025">2025</option>
-                                                            <option value="2026">2026</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-12 col-md-12">
-                                                    <div class="mb-3">
-                                                        <label>Institution banquaire<span
-                                                                class="text-danger">*</span></label>
-                                                        <select name="istitut_banks_id" class="form-control">
-                                                            @foreach ($collection as $item)
-                                                                <option value="{{ $item->id }}">{{ $item->code }} - {{ $item->libelle }}</option>
-                                                            @endforeach
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-4 col-md-12">
-                                                    <div class="mb-3">
-                                                        <label>Charges occasionelles<span class="text-danger">*</span></label>
-                                                        <input class="form-control" type="text" name="occasionnelle"
-                                                            value="{{ $total_occasionnelle }}" readonly />
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-4 col-md-12">
-                                                    <div class="mb-3">
-                                                        <label>Pré-comptes<span class="text-danger">*</span></label>
-                                                        <input class="form-control" type="text" name="precompte"
-                                                            value="{{ $total_precompte }}" readonly />
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-4 col-md-12">
-                                                    <div class="mb-3">
-                                                        <label>Autres charges<span class="text-danger">*</span></label>
-                                                        <input class="form-control" type="text" name="autres_retenu"
-                                                            value="{{ $total_retenues }}" readonly />
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="mt-3">
-                                                <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#formValidationBackdrop">Généerer le paiement</button>
-                                            </div>
-                                            @include('require.validationModal')
-                                        </form>
-                                    </div>
-                                    <div class="tab-pane fade" id="custom-tabs-four-profile" role="tabpanel"
+                                    <div class="tab-pane fade show active" id="custom-tabs-four-profile" role="tabpanel"
                                         aria-labelledby="custom-tabs-four-profile-tab">
                                         <div class="page-header-subtitle mb-3">
                                             <a class="btn btn-success" href="#" class="btn btn-success"

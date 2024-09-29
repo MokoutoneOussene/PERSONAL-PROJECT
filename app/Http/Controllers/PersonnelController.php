@@ -61,10 +61,8 @@ class PersonnelController extends Controller
             'lieunais' => $request->lieunais,
             'province' => $request->province,
             'matrimoniale' => $request->matrimoniale,
-            'date_resiliation' => $request->date_resiliation,
             'fonction' => $request->fonction,
             'email' => $request->email,
-            'contrat' => $request->contrat,
             'num_cnib' => $request->num_cnib,
             'date_cnib' => $request->date_cnib,
             'lieu_cnib' => $request->lieu_cnib,
@@ -84,7 +82,6 @@ class PersonnelController extends Controller
     {
         $finds = Personnel::find($id);
         return view('pages.personnel.detail', compact('finds'));
-
     }
 
     /**
@@ -92,7 +89,8 @@ class PersonnelController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $finds = Personnel::find($id);
+        return view('pages.personnel.edit', compact('finds'));
     }
 
     /**
@@ -108,6 +106,10 @@ class PersonnelController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $perso = Personnel::find($id);
+        $perso->delete();
+
+        emotify('error', 'l\'agent supprimé avec success !');
+        return redirect()->back();
     }
 }

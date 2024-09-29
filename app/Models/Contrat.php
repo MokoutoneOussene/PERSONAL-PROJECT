@@ -18,14 +18,17 @@ class Contrat extends Model
     }
 
     function Occasionnelle() {
-        return $this->hasOne(Occasionnelle::class);
+        return $this->hasMany(Occasionnelle::class,"contrats_id","id");
     }
 
     function Precompte() {
-        return $this->hasOne(Precompte::class);
+        return $this->hasMany(Precompte::class,"contrats_id","id");
+    }
+    function AutresRetenu() {
+        return $this->hasMany(AutresRetenu::class,"contrats_id","id");
     }
 
     function Paiement() {
-        return $this->hasOne(Paiement::class);
+        return $this->hasMany(Paiement::class,"contrats_id","id");
     }
 }

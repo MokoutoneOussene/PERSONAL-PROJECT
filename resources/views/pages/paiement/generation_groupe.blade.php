@@ -1,5 +1,4 @@
 @extends('layouts.master')
-
 @section('content')
     <header class="page-header page-header-dark pb-10"
         style="background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 50%, rgba(0,212,255,1) 100%);">
@@ -27,24 +26,36 @@
             </div>
         </div>
     </header>
-    <form action="" method="POST">
+    <form action="{{url("generation_paiement_groupe")}}" method="POST">
+        @csrf
         <div class="container-xl px-4 mt-n10">
             <div class="row">
                 <div class="col-lg-12">
                     <!-- Tabbed dashboard card example-->
                     <div class="card mb-4">
                         <div class="card-body">
+                            <div>
+                                @if (count(session("allready")??[])!=0)
+                                    <div class="alert alert-danger alert-dismissible fade show w-100" role="alert">
+                                        <p>Les matricules suivants ont déjà été payés à cette période, choisissez une autre période: </p>
+                                        @foreach(session("allready") as $mat)
+                                            <p><strong>{{ $mat }}</strong></p>
+                                        @endforeach
+                                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                    </div>
+                                @endif
+                            </div>
                             <div class="row">
-                                <div class="col-4">
+                                <div class="col-lg-12 col-md-12">
                                     <div class="row m-2" style="border: 2px solid rgb(48, 56, 126); border-radius: 5px;">
                                         <input class="form-control" type="text" name="contrats_id" hidden />
-                                        <div class="col-lg12 col-md-12 mt-3">
+                                        <div class="col-lg-4 col-md-12 mt-2">
                                             <div class="mb-3">
                                                 <label>Date du paiement<span class="text-danger">*</span></label>
                                                 <input class="form-control" type="date" name="date" />
                                             </div>
                                         </div>
-                                        <div class="col-lg-12 col-md-12">
+                                        <div class="col-lg-4 col-md-12 mt-2">
                                             <div class="mb-3">
                                                 <label>Mode paie<span class="text-danger">*</span></label>
                                                 <select name="mode_paie" class="form-control">
@@ -54,26 +65,26 @@
                                                 </select>
                                             </div>
                                         </div>
-                                        <div class="col-lg-12 col-md-12">
+                                        <div class="col-lg-4 col-md-12 mt-2">
                                             <div class="mb-3">
                                                 <label>Période<span class="text-danger">*</span></label>
                                                 <select name="periode_paie" class="form-control">
-                                                    <option value="1er au 31 Janvier">1er au 31 Janvier</option>
-                                                    <option value="1er au 29 Févier">1er au 29 Févier</option>
-                                                    <option value="1er au 30 Mars">1er au 30 Mars</option>
-                                                    <option value="1er au 31 Avril">1er au 31 Avril</option>
-                                                    <option value="1er au 30 Mai">1er au 30 Mai</option>
-                                                    <option value="1er au 31 Juin">1er au 31 Juin</option>
-                                                    <option value="1er au 30 Juillet">1er au 30 Juillet</option>
-                                                    <option value="1er au 31 Aout">1er au 31 Aout</option>
-                                                    <option value="1er au 30 Septembre">1er au 30 Septembre</option>
-                                                    <option value="1er au 31 Octobre">1er au 31 Octobre</option>
-                                                    <option value="1er au 30 Novembre">1er au 30 Novembre</option>
-                                                    <option value="1er au 31 Decembre">1er au 31 Decembre</option>
+                                                    <option value="01">1er au 31 Janvier</option>
+                                                    <option value="02">1er au 29 Févier</option>
+                                                    <option value="03">1er au 30 Mars</option>
+                                                    <option value="04">1er au 31 Avril</option>
+                                                    <option value="05">1er au 30 Mai</option>
+                                                    <option value="06">1er au 31 Juin</option>
+                                                    <option value="07">1er au 30 Juillet</option>
+                                                    <option value="08">1er au 31 Aout</option>
+                                                    <option value="09">1er au 30 Septembre</option>
+                                                    <option value="10">1er au 31 Octobre</option>
+                                                    <option value="11">1er au 30 Novembre</option>
+                                                    <option value="12">1er au 31 Decembre</option>
                                                 </select>
                                             </div>
                                         </div>
-                                        <div class="col-lg-12 col-md-12">
+                                        <div class="col-lg-6 col-md-12">
                                             <div class="mb-3">
                                                 <label>Année<span class="text-danger">*</span></label>
                                                 <select name="annee_paie" class="form-control">
@@ -83,7 +94,7 @@
                                                 </select>
                                             </div>
                                         </div>
-                                        <div class="col-lg-12 col-md-12">
+                                        <div class="col-lg-6 col-md-12">
                                             <div class="mb-3">
                                                 <label>Institution banquaire<span class="text-danger">*</span></label>
                                                 <select name="istitut_banks_id" class="form-control">
@@ -94,17 +105,21 @@
                                             </div>
                                         </div>
                                         <div class="mt-2 mb-2">
-                                            <button type="submit" class="btn btn-success">Générer</button>
+                                            <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#formValidationBackdrop">Générer le paiement</button>
                                         </div>
+                                        @include('require.validationModal')
                                     </div>
                                 </div>
-                                <div class="col-8">
+                                <div class="col-lg-12 col-md-12">
                                     <table id="datatablesSimple">
                                         <thead>
                                             <tr>
                                                 <th>Matricule</th>
+                                                <th>N° CNIB</th>
                                                 <th>Nom</th>
-                                                <th>Net a payer</th>
+                                                <th>Genre</th>
+                                                <th>Catégorie</th>
+                                                <th>Fonction</th>
                                                 <th>Selectionner</th>
                                             </tr>
                                         </thead>
@@ -112,10 +127,13 @@
                                             @foreach ($collection as $item)
                                                 <tr>
                                                     <td>{{ $item->Agent->matricule }}</td>
+                                                    <td>{{ $item->Agent->num_cnib }}</td>
                                                     <td>{{ $item->Agent->nom }} {{ $item->Agent->prenom }}</td>
-                                                    <td>{{ $item->sal_net }}</td>
+                                                    <td>{{ $item->Agent->genre }}</td>
+                                                    <td>{{ $item->Agent->categorie }}</td>
+                                                    <td>{{ $item->Agent->fonction }}</td>
                                                     <td class="text-center">
-                                                        <input class="form-check-input" type="checkbox" value="">
+                                                        <input name="contrat[]" class="form-check-input" type="checkbox" value="{{$item->id}}">
                                                     </td>
                                                 </tr>
                                             @endforeach

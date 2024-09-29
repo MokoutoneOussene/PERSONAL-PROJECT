@@ -87,6 +87,38 @@ class PaiementController extends Controller
         );
     }
 
+    public function generationgroupe(Request $request)
+    {
+        $allready=[];
+        foreach ($request->contrat as $contrat_id){
+            $contrat = Contrat::find($contrat_id);
+            $occasionelle = $contrat-> Occasionnelle()->where('statut', '=', 'En Cours')->get();
+            $precomptes = $contrat->Precompte()->where('statut', '=', 'En Cours')->get();
+            $autres_retenue = $contrat->AutresRetenu()->where('statut', '=', 'En Cours')->get();
+            $i=0;
+            //$collection = IstitutBank::latest()->get();
+            $paiment_recent=$contrat->Paiement()->where("periode_paie","=",$request->periode_paie)->where("annee_paie","=",$request->annee_paie)->get();
+            if (count($paiment_recent)==0){
+                $total_occasionnelle = $occasionelle->sum('montant');
+                $total_precompte = $precomptes->sum('retenu_mois');
+                $total_retenues = $autres_retenue->sum('montant');
+                $paiement=new Paiement();
+                $paiement->periode_paie=$request->periode_paie;
+                $paiement->mode_paie=$request->mode_paie;
+                $paiement->contrats_id=$contrat_id;
+                $paiement->annee_paie=$request->annee_paie;
+                $paiement->occasionnelle=$total_occasionnelle;
+                $paiement->precompte=$total_precompte;
+                $paiement->autres_retenu=$total_retenues;
+                $paiement->istitut_banks_id=$request->istitut_banks_id;
+                $paiement->save();
+            }else{
+               $allready[]=$contrat->Agent->matricule;
+            }
+        }
+        return back()->with(["allready"=>$allready]);
+    }
+
     /**
      * Display the specified resource.
      */
@@ -107,16 +139,29 @@ class PaiementController extends Controller
     }
 
     /**
+     * Display the specified resource.
+     */
+    public function generation_bulletin(Request $request)
+    {
+        $periode_paie = $request->periode_paie;
+        $annee_paie = $request->annee_paie;
+
+        $collection = Paiement::where('periode_paie', '=', $periode_paie)->where('annee_paie', '=', $annee_paie)->get();
+        return view('pages.paiement.generation_bulletin', compact('collection'));
+    }
+ 
+    /**
      * Show the form for creating a new resource.
      */
     public function date_filter(Request $request)
     {
         $periode_paie = $request->periode_paie;
+        $annee_paie = $request->annee_paie;
 
-        $collection = Paiement::where('periode_paie', '=', $periode_paie)->get();
+        $collection = Paiement::where('periode_paie', '=', $periode_paie)->where('annee_paie', '=', $annee_paie)->get();
         $total = $collection->sum('salaire_total');
 
-        return view('pages.paiement.liste_paie', compact('collection', 'total'));
+        return view('pages.paiement.search_liste_paie', compact('collection', 'total'));
     }
 
     /**
@@ -140,6 +185,10 @@ class PaiementController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $paies = Paiement::find($id);
+        $paies->delete();
+
+        emotify('error', ' Paiement de salaire supprimer avec success !');
+        return redirect()->back();
     }
 }

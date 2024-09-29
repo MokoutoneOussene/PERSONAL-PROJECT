@@ -9,12 +9,11 @@
                     <div class="col-auto mt-4">
                         <h1 class="page-header-title">
                             <div class="page-header-icon"><i data-feather="activity"></i></div>
-                            LISTE DES AGENTS
+                            LISTE DES ENFANTS
                         </h1>
                         <div class="page-header-subtitle mt-3">
-                            <a class="btn btn-success" href="{{ route('gestion_personnel.create') }}"
-                                class="btn btn-success" data-bs-toggle="modal" data-bs-target="#formLocataireBackdrop">
-                                Ajouter un nouvel agent
+                            <a class="btn btn-success" href="{{ route('gestion_enfant.create') }}">
+                                Ajouter un nouvel enfant
                             </a>
                         </div>
                     </div>
@@ -40,85 +39,36 @@
                     <div class="card-body">
                         <div
                             style="background: linear-gradient(90deg, rgb(160, 240, 195) 0%, rgb(237, 237, 163) 100%); border-radius: 5px;">
-                            <form action="{{ route('perso_filter') }}" method="GET">
-                                <div class="d-flex justify-content-end mb-3">
-                                    <div class="col-3 m-2">
-                                        <label>Selectionner une fonction</label>
-                                        <select name="fonction" class="form-control">
-                                            <option value="Responsable HSE">Responsable HSE</option>
-                                            <option value="Superviseur">Superviseur</option>
-                                            <option value="Mécanicien">Mécanicien</option>
-                                            <option value="Foreur">Foreur</option>
-                                            <option value="Aide foreur">Aide foreur</option>
-                                            <option value="Assistant HSE">Assistant HSE</option>
-                                            <option value="Aide Mécanicien">Aide Mécanicien</option>
-                                            <option value="Secretaire">Secretaire</option>
-                                            <option value="Comptable">Comptable</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-1 m-2 pt-4">
-                                        <button type="submit" class="btn btn-success">Actualiser</button>
-                                    </div>
-                                </div>
-                            </form>
                         </div>
                         <table id="datatablesSimple">
                             <thead>
                                 <tr>
-                                    <th>Matricule</th>
                                     <th>Nom</th>
+                                    <th>Prénom(s)</th>
                                     <th>Genre</th>
-                                    <th>Catégorie</th>
-                                    <th>date embauche</th>
-                                    <th>Résidence</th>
-                                    <th>Téléphone</th>
+                                    <th>Date de naissance</th>
+                                    <th>Lieu de naissance</th>
+                                    <th>Conjoint</th>
+                                    <th>Adresse</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach ($collection as $item)
                                     <tr>
-                                        <td>{{ $item->matricule }}</td>
-                                        <td>{{ $item->nom }} {{ $item->prenom }}</td>
+                                        <td>{{ $item->nom }}</td>
+                                        <td>{{ $item->prenom }} </td>
                                         <td>{{ $item->genre }}</td>
-                                        <td>{{ $item->categorie }}</td>
-                                        <td>{{ $item->date_embauche }}</td>
-                                        <td>{{ $item->residence }}</td>
-                                        <td>{{ $item->telephone }}</td>
-                                        <td>
-                                            <a href=""
-                                                data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight{{ $item->id }}"
-                                                aria-controls="offcanvasRight">
-                                                <i class="me-2 text-green text-center" data-feather="eye"></i>
+                                        <td>{{ $item->date_nais }}</td>
+                                        <td>{{ $item->lieu_nais }}</td>
+                                        <td>{{ $item->nom_conj }} {{ $item->prenom_conj }}</td>
+                                        <td>{{ $item->adresse }}</td>
+                                        <td class="text-center">
+                                            <a class="text-center"
+                                                href="{{ route('gestion_personnel.show', [$item->id]) }}">
+                                                <i class="me-2 text-green" data-feather="eye"></i>
                                             </a>
                                         </td>
-                                        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight{{ $item->id }}"
-                                            aria-labelledby="offcanvasRightLabel">
-                                            <div class="offcanvas-header">
-                                                <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-                                            </div>
-                                            <div class="offcanvas-body">
-                                                <div class="col-xl-12">
-                                                    <div class="card mb-4">
-                                                        <div class="card-header">Plus sur l'agent N°: {{ $item->id }}</div>
-                                                        <div class="list-group list-group-flush small">
-                                                            <a class="list-group-item list-group-item-action" href="{{ route('gestion_personnel.show', [$item->id]) }}">
-                                                                <i class="fas fa-eye fa-fw text-success me-2"></i>
-                                                                Detail de l'agent
-                                                            </a>
-                                                            <a class="list-group-item list-group-item-action" href="{{ route('gestion_personnel.edit', [$item->id]) }}">
-                                                                <i class="fas fa-edit fa-fw text-warning me-2"></i>
-                                                                Modifier l'agent
-                                                            </a>
-                                                            <a class="list-group-item list-group-item-action" href="{{ url('delete_personnel/' . $item->id) }}">
-                                                                <i class="fas fa-close fa-fw text-danger me-2"></i>
-                                                                Supprimer l'agent
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
                                     </tr>
                                 @endforeach
                             </tbody>
@@ -188,7 +138,7 @@
                                                     <div class="col-lg-4 col-md-12">
                                                         <div class="mb-3">
                                                             <label>Lieu de naissance</label>
-                                                            <input class="form-control" type="text" name="lieunais" />
+                                                            <input class="form-control" type="text" name="lieu_nais" />
                                                         </div>
                                                     </div>
                                                     <div class="col-lg-4 col-md-12">

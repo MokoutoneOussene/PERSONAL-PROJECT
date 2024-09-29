@@ -45,6 +45,18 @@
                         </nav>
                     </div>
                     <a class="nav-link collapsed" href="javascript:void(0);" data-bs-toggle="collapse"
+                        data-bs-target="#pagesCollapseError33" aria-expanded="false" aria-controls="pagesCollapseError">
+                        <div class="nav-link-icon"><i data-feather="users"></i></div>
+                        ENFANTS
+                        <div class="sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                    </a>
+                    <div class="collapse" id="pagesCollapseError33" data-bs-parent="#accordionSidenavPagesMenu">
+                        <nav class="sidenav-menu-nested nav">
+                            <a class="nav-link" href="{{ route('gestion_enfant.create') }}">Ajouter un enfant</a>
+                            <a class="nav-link" href="{{ route('gestion_enfant.index') }}">Liste des enfants</a>
+                        </nav>
+                    </div>
+                    <a class="nav-link collapsed" href="javascript:void(0);" data-bs-toggle="collapse"
                         data-bs-target="#pagesCollapseError4" aria-expanded="false" aria-controls="pagesCollapseError">
                         <div class="nav-link-icon"><i data-feather="bar-chart"></i></div>
                         DEPENSE
@@ -64,8 +76,8 @@
                     </a>
                     <div class="collapse" id="pagesCollapseError5" data-bs-parent="#accordionSidenavPagesMenu">
                         <nav class="sidenav-menu-nested nav">
-                            <a class="nav-link" href="{{ route('gestion_paiement.index') }}">Génération individuel</a>
-                            <a class="nav-link" href="{{ route('Generation_plusieurs') }}">Génération groupé</a>
+                            <a class="nav-link" href="{{ route('gestion_paiement.index') }}">Traitement salaire</a>
+                            <a class="nav-link" href="{{ route('Generation_plusieurs') }}">Paiement salaire</a>
                             <a class="nav-link" href="{{ route('paies') }}">Liste paiements</a>
                         </nav>
                     </div>

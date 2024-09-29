@@ -58,11 +58,52 @@
                                         <td>{{ $item->nature }}</td>
                                         <td>{{ $item->statut }}</td>
                                         <td>{{ $item->date_signature }}</td>
-                                        <td class="text-center">
-                                            <a class="text-center" href="{{ route('gestion_contrat.show', [$item->id]) }}">
-                                                <i class="me-2 text-green" data-feather="eye"></i>
+                                        <td>
+                                            <a href=""
+                                                data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight{{ $item->id }}"
+                                                aria-controls="offcanvasRight">
+                                                <i class="me-2 text-green text-center" data-feather="eye"></i>
                                             </a>
                                         </td>
+                                        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight{{ $item->id }}"
+                                            aria-labelledby="offcanvasRightLabel">
+                                            <div class="offcanvas-header">
+                                                <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                                            </div>
+                                            <div class="offcanvas-body">
+                                                <div class="col-xl-12">
+                                                    <div class="card mb-4">
+                                                        <div class="card-header">Plus sur le contrat N°: {{ $item->id }}</div>
+                                                        <div class="list-group list-group-flush small">
+                                                            <a class="list-group-item list-group-item-action" href="{{ route('gestion_contrat.show', [$item->id]) }}">
+                                                                <i class="fas fa-eye fa-fw text-success me-2"></i>
+                                                                Detail du contrat
+                                                            </a>
+                                                            <a class="list-group-item list-group-item-action" href="{{ route('gestion_contrat.edit', [$item->id]) }}">
+                                                                <i class="fas fa-edit fa-fw text-warning me-2"></i>
+                                                                Modifier le contrat
+                                                            </a>
+                                                            <a class="list-group-item list-group-item-action" href="{{ url('imprimer_contrat/' . $item->id) }}" target="_blank">
+                                                                <i class="fas fa-print fa-fw text-success me-2"></i>
+                                                                Imprimer le contrat
+                                                            </a>
+                                                            <a class="list-group-item list-group-item-action" href="{{ url('imprimer_contrat/' . $item->id) }}" target="_blank">
+                                                                <i class="fas fa-print fa-fw text-success me-2"></i>
+                                                                Attestation de travail
+                                                            </a>
+                                                            <a class="list-group-item list-group-item-action" href="{{ url('imprimer_contrat/' . $item->id) }}" target="_blank">
+                                                                <i class="fas fa-print fa-fw text-success me-2"></i>
+                                                                Contrat de travail
+                                                            </a>
+                                                            <a class="list-group-item list-group-item-action" href="{{ url('delete_personnel/' . $item->id) }}">
+                                                                <i class="fas fa-close fa-fw text-danger me-2"></i>
+                                                                Supprimer le contrat
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </tr>
                                 @endforeach
                             </tbody>

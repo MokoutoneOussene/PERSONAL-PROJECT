@@ -77,7 +77,7 @@
                     <p>{{ $finds->Contrat->Agent->nbre_enfant }}</p>
                 </div>
             </div>
-        </div>        
+        </div>
         <div class="p-2" style="border-bottom: 1px solid rgb(12, 12, 12); width: 100%">
             <div class="row mb-2">
                 <div class="col-2">
@@ -149,22 +149,25 @@
                     <p>{{ $finds->Contrat->prime_fonction }}</p>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-2">
-                    <p>315</p>
+            @foreach ($finds->Contrat->Occasionnelle as $ocaz)
+                <div class="row">
+                    <div class="col-2">
+                        <p>{{ $ocaz->code }}</p>
+                    </div>
+                    <div class="col-4">
+                        <p>{{ $ocaz->libelle }}</p>
+                    </div>
+                    <div class="col-3">
+                        <p>-</p>
+                    </div>
+                    <div class="col-3">
+                        <p>{{ $ocaz->montant }}</p>
+                    </div>
                 </div>
-                <div class="col-4">
-                    <p>Charges suplementaire</p>
-                </div>
-                <div class="col-3">
-                    <p>-</p>
-                </div>
-                <div class="col-3">
-                    <p>{{ $finds->occasionnelle }}</p>
-                </div>
-            </div>
+            @endforeach
         </div>
-        <div class="p-2 mb-2" style="border-bottom: 1px solid rgb(12, 12, 12); width: 100%; background: rgb(216, 213, 213)">
+        <div class="p-2 mb-2"
+            style="border-bottom: 1px solid rgb(12, 12, 12); width: 100%; background: rgb(216, 213, 213)">
             <div class="row">
                 <div class="col-6">
                     <strong>AVOIRS</strong>
@@ -206,34 +209,38 @@
                     <p>{{ $finds->Contrat->cnss }}</p>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-2">
-                    <p>220</p>
+            @foreach ($finds->Contrat->Precompte as $preco)
+                <div class="row">
+                    <div class="col-2">
+                        <p>{{ $preco->code }}</p>
+                    </div>
+                    <div class="col-4">
+                        <p>{{ $preco->libelle }}</p>
+                    </div>
+                    <div class="col-3">
+                        <p>-</p>
+                    </div>
+                    <div class="col-3">
+                        <p>{{ $preco->retenu_mois }}</p>
+                    </div>
                 </div>
-                <div class="col-4">
-                    <p>Retenues avances du mois</p>
+            @endforeach
+            @foreach ($finds->Contrat->AutresRetenu as $autre)
+                <div class="row">
+                    <div class="col-2">
+                        <p>{{ $autre->code }}</p>
+                    </div>
+                    <div class="col-4">
+                        <p>{{ $autre->libelle }}</p>
+                    </div>
+                    <div class="col-3">
+                        <p>-</p>
+                    </div>
+                    <div class="col-3">
+                        <p>{{ $autre->montant }}</p>
+                    </div>
                 </div>
-                <div class="col-3">
-                    <p>-</p>
-                </div>
-                <div class="col-3">
-                    <p>{{ $finds->precompte }}</p>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-2">
-                    <p>330</p>
-                </div>
-                <div class="col-4">
-                    <p>Autres etenues</p>
-                </div>
-                <div class="col-3">
-                    <p>-</p>
-                </div>
-                <div class="col-3">
-                    <p>{{ $finds->autres_retenu }}</p>
-                </div>
-            </div>
+            @endforeach
         </div>
         <div class="p-2" style="width: 100%; background: rgb(216, 213, 213)">
             <div class="row">

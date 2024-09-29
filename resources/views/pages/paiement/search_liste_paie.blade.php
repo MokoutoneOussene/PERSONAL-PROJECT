@@ -32,8 +32,11 @@
                 <!-- Tabbed dashboard card example-->
                 <div class="card mb-4">
                     <div class="card-body">
-                        <div style="background: linear-gradient(90deg, rgb(160, 240, 195) 0%, rgb(237, 237, 163) 100%); border-radius: 5px;">
-                            <form action="{{ route('date_filter') }}" method="GET">
+                        <div
+                            style="background: linear-gradient(90deg, rgb(160, 240, 195) 0%, rgb(237, 237, 163) 100%); border-radius: 5px;">
+                            <br>
+                            <h4 class="text-center text-danger">Générer les bulletins par période et par année</h4>
+                            <form action="{{ route('generation_bulletin') }}" method="GET" target="_blank">
                                 <div class="d-flex justify-content-end mb-3">
                                     <div class="col-3 m-2">
                                         <label>Periode paie</label>
@@ -60,8 +63,8 @@
                                             <option value="2026">2026</option>
                                         </select>
                                     </div>
-                                    <div class="col-1 m-2 pt-4">
-                                        <button type="submit" class="btn btn-success">Actualiser</button>
+                                    <div class="col-2 m-2 pt-4">
+                                        <button type="submit" class="btn btn-success">Générer les bulletins</button>
                                     </div>
                                 </div>
                             </form>
