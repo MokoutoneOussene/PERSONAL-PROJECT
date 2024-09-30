@@ -87,6 +87,16 @@ class PaiementController extends Controller
         );
     }
 
+    /**
+     * Display the specified resource.
+     */
+    public function Gener_groupe()
+    {
+        $collection = Contrat::latest()->get();
+        $banques = IstitutBank::latest()->get();
+        return view('pages.paiement.generation_groupe', compact('collection', 'banques'));
+    }
+
     public function generationgroupe(Request $request)
     {
         $allready=[];
@@ -117,16 +127,6 @@ class PaiementController extends Controller
             }
         }
         return back()->with(["allready"=>$allready]);
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function Gener_groupe()
-    {
-        $collection = Contrat::latest()->get();
-        $banques = IstitutBank::latest()->get();
-        return view('pages.paiement.generation_groupe', compact('collection', 'banques'));
     }
 
     /**

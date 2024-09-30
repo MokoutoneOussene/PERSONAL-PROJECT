@@ -21,15 +21,15 @@
                         </nav>
                     </div>
                     <a class="nav-link collapsed" href="javascript:void(0);" data-bs-toggle="collapse"
-                        data-bs-target="#pagesCollapseError2" aria-expanded="false" aria-controls="pagesCollapseError">
-                        <div class="nav-link-icon"><i data-feather="repeat"></i></div>
-                        MISSION
+                        data-bs-target="#pagesCollapseError33" aria-expanded="false" aria-controls="pagesCollapseError">
+                        <div class="nav-link-icon"><i data-feather="users"></i></div>
+                        ENFANTS
                         <div class="sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                     </a>
-                    <div class="collapse" id="pagesCollapseError2" data-bs-parent="#accordionSidenavPagesMenu">
+                    <div class="collapse" id="pagesCollapseError33" data-bs-parent="#accordionSidenavPagesMenu">
                         <nav class="sidenav-menu-nested nav">
-                            <a class="nav-link" href="{{ route('gestion_mission.create') }}">Programmer mission</a>
-                            <a class="nav-link" href="{{ route('gestion_mission.index') }}">Liste des mission</a>
+                            <a class="nav-link" href="{{ route('gestion_enfant.create') }}">Ajouter un enfant</a>
+                            <a class="nav-link" href="{{ route('gestion_enfant.index') }}">Liste des enfants</a>
                         </nav>
                     </div>
                     <a class="nav-link collapsed" href="javascript:void(0);" data-bs-toggle="collapse"
@@ -45,15 +45,15 @@
                         </nav>
                     </div>
                     <a class="nav-link collapsed" href="javascript:void(0);" data-bs-toggle="collapse"
-                        data-bs-target="#pagesCollapseError33" aria-expanded="false" aria-controls="pagesCollapseError">
-                        <div class="nav-link-icon"><i data-feather="users"></i></div>
-                        ENFANTS
+                        data-bs-target="#pagesCollapseError2" aria-expanded="false" aria-controls="pagesCollapseError">
+                        <div class="nav-link-icon"><i data-feather="repeat"></i></div>
+                        MISSION
                         <div class="sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                     </a>
-                    <div class="collapse" id="pagesCollapseError33" data-bs-parent="#accordionSidenavPagesMenu">
+                    <div class="collapse" id="pagesCollapseError2" data-bs-parent="#accordionSidenavPagesMenu">
                         <nav class="sidenav-menu-nested nav">
-                            <a class="nav-link" href="{{ route('gestion_enfant.create') }}">Ajouter un enfant</a>
-                            <a class="nav-link" href="{{ route('gestion_enfant.index') }}">Liste des enfants</a>
+                            <a class="nav-link" href="{{ route('gestion_mission.create') }}">Programmer mission</a>
+                            <a class="nav-link" href="{{ route('gestion_mission.index') }}">Liste des mission</a>
                         </nav>
                     </div>
                     <a class="nav-link collapsed" href="javascript:void(0);" data-bs-toggle="collapse"
