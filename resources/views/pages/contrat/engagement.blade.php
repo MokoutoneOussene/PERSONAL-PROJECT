@@ -56,13 +56,11 @@
                                                     <div class="row">
                                                         <div class="col-lg-4 col-md-12">
                                                             <div class="mb-3">
-                                                                <label>Selectionner agent <span
-                                                                        class="text-danger">*</span></label>
+                                                                <label>Selectionner agent <span class="text-danger">*</span></label>
                                                                 <select name="personnels_id" class="form-control">
                                                                     @foreach ($personnels as $key => $value)
                                                                         <option value="{{ $value->id }}">
-                                                                            {{ $value->matricule }} - {{ $value->nom }} -
-                                                                            {{ $value->prenom }}</option>
+                                                                            {{ $value->matricule }} - {{ $value->nom }} - {{ $value->prenom }}</option>
                                                                     @endforeach
                                                                 </select>
                                                             </div>
@@ -80,10 +78,8 @@
                                                         </div>
                                                         <div class="col-lg-4 col-md-12">
                                                             <div class="mb-3">
-                                                                <label>Date de signature <span
-                                                                        class="text-danger">*</span></label>
-                                                                <input class="form-control" type="date"
-                                                                    name="date_signature" />
+                                                                <label>Date de signature <span class="text-danger">*</span></label>
+                                                                <input class="form-control" type="date" name="date_signature" />
                                                             </div>
                                                         </div>
                                                     </div>
@@ -111,10 +107,8 @@
                                                         </div>
                                                         <div class="col-lg-3 col-md-12">
                                                             <div class="mb-3">
-                                                                <label>Salaire de base<span
-                                                                        class="text-danger">*</span></label>
-                                                                <input class="form-control" type="number"
-                                                                    style="background: rgb(218, 216, 216)" readonly />
+                                                                <label>Salaire de base<span class="text-danger">*</span></label>
+                                                                <input class="form-control" type="number" style="background: rgb(218, 216, 216)" readonly />
                                                             </div>
                                                         </div>
                                                     </div>

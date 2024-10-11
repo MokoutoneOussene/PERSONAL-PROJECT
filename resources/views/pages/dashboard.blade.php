@@ -11,11 +11,6 @@
                             <div class="page-header-icon"><i data-feather="activity"></i></div>
                             TABLEAU DE BORD
                         </h1>
-                        <div class="page-header-subtitle mt-3">
-                            <a class="btn btn-success" href="#">
-                                Quelques statistique des traitements!
-                            </a>
-                        </div>
                     </div>
                     <div class="col-12 col-xl-auto mt-4">
                         <div class="input-group input-group-joined border-0" style="width: 16.5rem">
@@ -101,32 +96,38 @@
             </div>
         </div>
         <!-- Example Charts for Dashboard Demo-->
-        <div class="row">
-            <div class="col-lg-12 col-md-12 mb-4">
+        <div class="row mb-3">
+            <div class="col-lg-12 col-md-12">
                 <div class="card lift h-100"
                     style="background: linear-gradient(90deg, rgb(181, 233, 233) 0%, rgb(251, 252, 252) 100%);">
                     <div class="card-body">
                         <div class="d-flex justify-content-between align-items-center text-center">
                             <div class="col-lg-4 col-md-12">
                                 <div class="mb-2">
-                                    <h6 class="text-uppercase">Nombre depenses du jours</h6>
+                                    <h6 class="text-uppercase">total salaire brut</h6>
                                     <div class="text-muted small">
                                         <h1 class="text-primary mt-5" style="font-size: 20px; font-weight: bold;">
-                                            {{ $depenses->count() }}</h1>
+                                            85415241 FCFA</h1>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-lg-4 col-md-12">
                                 <div class="mb-2">
-                                    <h6 class="text-uppercase">Total des depenses du jours</h6>
+                                    <h6 class="text-uppercase">Total iuts</h6>
                                     <div class="text-muted small">
                                         <h1 class="text-primary mt-5" style="font-size: 20px; font-weight: bold;">
-                                            {{ $total }} FCFA</h1>
+                                            88454854 FCFA</h1>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-lg-4 col-md-12">
-                                <img src="{{ asset('images/undraw_wait_in_line_o2aq.png') }}" alt="images" style="width: 8rem" />
+                                <div class="mb-2">
+                                    <h6 class="text-uppercase">Total cnss</h6>
+                                    <div class="text-muted small">
+                                        <h1 class="text-primary mt-5" style="font-size: 20px; font-weight: bold;">
+                                            88454854 FCFA</h1>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>

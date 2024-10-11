@@ -12,6 +12,7 @@ use App\Http\Controllers\PersonnelController;
 use App\Http\Controllers\PrecompteController;
 use App\Http\Controllers\InstitutBankController;
 use App\Http\Controllers\OccasionnelleController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -62,3 +63,8 @@ Route::resource('gestion_institut_banquaire', InstitutBankController::class);
 Route::resource('gestion_autres_retenues', RetenueController::class);
 
 Route::resource('gestion_enfant', EnfantController::class);
+
+Route::resource('gestion_utilisateur', UserController::class);
+Route::post('change_password/{id}', [UserController::class, 'change_password']);
+Route::post('add_profil_image/{id}', [UserController::class, 'profil_image']);
+Route::get('delete_user/{id}', [UserController::class, 'destroy']);

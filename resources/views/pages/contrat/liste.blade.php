@@ -213,15 +213,13 @@
                                                     <div class="col-lg-3 col-md-12">
                                                         <div class="mb-3">
                                                             <label>Prime ancienneté</label>
-                                                            <input class="form-control" type="number"
-                                                                name="prime_anciennete" />
+                                                            <input class="form-control" type="number" name="prime_anciennete" />
                                                         </div>
                                                     </div>
                                                     <div class="col-lg-3 col-md-12">
                                                         <div class="mb-3">
                                                             <label>Indemnité de logement</label>
-                                                            <input class="form-control" type="number"
-                                                                name="prime_logement" />
+                                                            <input class="form-control" type="number" name="prime_logement" />
                                                         </div>
                                                     </div>
                                                     <div class="col-lg-3 col-md-12">
@@ -234,8 +232,7 @@
                                                     <div class="col-lg-3 col-md-12">
                                                         <div class="mb-3">
                                                             <label>Indemnité de fonction</label>
-                                                            <input class="form-control" type="number"
-                                                                name="prime_fonction" />
+                                                            <input class="form-control" type="number" name="prime_fonction" />
                                                         </div>
                                                     </div>
                                                 </div>
@@ -251,8 +248,7 @@
                                                     <div class="col-lg-6 col-md-12">
                                                         <div class="mb-3">
                                                             <label>Retenu CNSS</label>
-                                                            <input class="form-control" type="number" name="cnss"
-                                                                readonly />
+                                                            <input class="form-control" type="number" name="cnss" readonly />
                                                         </div>
                                                     </div>
                                                 </div>

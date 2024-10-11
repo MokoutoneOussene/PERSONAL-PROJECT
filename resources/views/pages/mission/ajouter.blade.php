@@ -141,7 +141,6 @@
                                                     <!-- Bouton pour soumettre -->
                                                     <div class="mt-3">
                                                         <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#formValidationBackdrop">Enregistrer</button>
-                                                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Fermer</button>
                                                     </div>
                                                     @include('require.validationModal')
                                                 </div>

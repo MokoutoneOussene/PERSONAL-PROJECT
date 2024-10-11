@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Enfant;
 use App\Models\Personnel;
 use Illuminate\Http\Request;
 
@@ -66,7 +67,6 @@ class PersonnelController extends Controller
             'num_cnib' => $request->num_cnib,
             'date_cnib' => $request->date_cnib,
             'lieu_cnib' => $request->lieu_cnib,
-            'nbre_enfant' => $request->nbre_enfant,
             'charge_uts' => $request->charge_uts,
             'photo' => $request->photo->store('photos_personnel', 'public'),
         ]);
@@ -81,7 +81,8 @@ class PersonnelController extends Controller
     public function show(string $id)
     {
         $finds = Personnel::find($id);
-        return view('pages.personnel.detail', compact('finds'));
+        $enfant = Enfant::where('personnels_id', '=', $id)->get();
+        return view('pages.personnel.detail', compact('finds', 'enfant'));
     }
 
     /**

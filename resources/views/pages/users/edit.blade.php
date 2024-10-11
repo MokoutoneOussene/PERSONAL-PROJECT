@@ -213,6 +213,12 @@
                                                         </div>
                                                         <div class="col-lg-4 col-md-12">
                                                             <div class="mb-3">
+                                                                <label>Nbre enfants</label>
+                                                                <input class="form-control" type="number" name="nbre_enfant" value="{{ $finds->nbre_enfant }}"/>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-4 col-md-12">
+                                                            <div class="mb-3">
                                                                 <label>Charge UITS</label>
                                                                 <input class="form-control" type="text" name="charge_uts" value="{{ $finds->charge_uts }}"/>
                                                             </div>

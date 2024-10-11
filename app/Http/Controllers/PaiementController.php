@@ -92,9 +92,12 @@ class PaiementController extends Controller
      */
     public function Gener_groupe()
     {
-        $collection = Contrat::latest()->get();
+        $collection = Contrat::where('statut', '=', 'En Cours')->get();
+        $total_iuts = $collection->sum('iuts');
+        $total_cnss = $collection->sum('cnss');
+        $total_brut = $collection->sum('sal_base') + $collection->sum('total_indemnite');
         $banques = IstitutBank::latest()->get();
-        return view('pages.paiement.generation_groupe', compact('collection', 'banques'));
+        return view('pages.paiement.generation_groupe', compact('collection', 'banques', 'total_iuts', 'total_cnss', 'total_brut'));
     }
 
     public function generationgroupe(Request $request)
@@ -149,7 +152,7 @@ class PaiementController extends Controller
         $collection = Paiement::where('periode_paie', '=', $periode_paie)->where('annee_paie', '=', $annee_paie)->get();
         return view('pages.paiement.generation_bulletin', compact('collection'));
     }
- 
+
     /**
      * Show the form for creating a new resource.
      */

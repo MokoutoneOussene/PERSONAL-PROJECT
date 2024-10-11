@@ -5,7 +5,7 @@
         <div class="container-xl px-4">
             <div class="page-header-content pt-4">
                 <div class="row align-items-center justify-content-between">
-                    <div class="col-auto mt-4">
+                    <div class="col-auto">
                         <h1 class="page-header-title">
                             <div class="page-header-icon"><i data-feather="activity"></i></div>
                             Génération de paiement pour plusieurs agents
@@ -14,7 +14,7 @@
                             <br>
                         </div>
                     </div>
-                    <div class="col-12 col-xl-auto mt-4">
+                    <div class="col-12 col-xl-auto">
                         <div class="input-group input-group-joined border-0" style="width: 16.5rem">
                             <span class="input-group-text"><i class="text-primary" data-feather="calendar"></i></span>
                             <div class="form-control ps-0 pointer">
@@ -25,7 +25,46 @@
                 </div>
             </div>
         </div>
+        <div class="row m-3">
+            <div class="col-lg-12 col-md-12">
+                <div class="card lift h-100"
+                    style="background: linear-gradient(90deg, rgb(181, 233, 233) 0%, rgb(251, 252, 252) 100%);">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-center text-center">
+                            <div class="col-lg-4 col-md-12">
+                                <div class="mb-2">
+                                    <h6 class="text-uppercase">total salaire brut</h6>
+                                    <div class="text-muted small">
+                                        <h1 class="text-primary mt-5" style="font-size: 20px; font-weight: bold;">
+                                            {{ $total_brut }} FCFA</h1>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-12">
+                                <div class="mb-2">
+                                    <h6 class="text-uppercase">Total iuts</h6>
+                                    <div class="text-muted small">
+                                        <h1 class="text-primary mt-5" style="font-size: 20px; font-weight: bold;">
+                                            {{ $total_iuts }} FCFA</h1>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-12">
+                                <div class="mb-2">
+                                    <h6 class="text-uppercase">Total cnss</h6>
+                                    <div class="text-muted small">
+                                        <h1 class="text-primary mt-5" style="font-size: 20px; font-weight: bold;">
+                                            {{ $total_cnss }} FCFA</h1>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </header>
+    
     <form action="{{url("generation_paiement_groupe")}}" method="POST">
         @csrf
         <div class="container-xl px-4 mt-n10">

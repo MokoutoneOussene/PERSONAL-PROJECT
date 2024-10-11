@@ -24,9 +24,13 @@
             <a class="btn btn-icon btn-transparent-dark dropdown-toggle" id="navbarDropdownUserImage"
                 href="javascript:void(0);" role="button" data-bs-toggle="dropdown" aria-haspopup="true"
                 aria-expanded="false">
-                <img class="img-account-profile rounded-circle mb-2" src="{{ asset('images/conn1.jpg') }}"
-                    alt="logo user" />
-                <img class="img-account-profile rounded-circle mb-2" src="" alt="logo user" />
+                @if (Auth::user()->photo == '')
+                    <img class="img-account-profile rounded-circle mb-2"
+                        src="{{ asset('images/user-placeholder.svg') }}" alt="logo user" />
+                @else
+                    <img class="img-account-profile rounded-circle mb-2"
+                        src="{{ asset('storage') . '/' . Auth::user()->photo }}" alt="logo user" />
+                @endif
             </a>
             <div class="dropdown-menu dropdown-menu-end border-0 shadow animated--fade-in-up"
                 aria-labelledby="navbarDropdownUserImage">
@@ -40,7 +44,7 @@
                     </div>
                 </h6>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="">
+                <a class="dropdown-item" href="{{ route('gestion_utilisateur.show', [Auth::user()->id]) }}">
                     <div class="dropdown-item-icon"><i data-feather="user"></i></div>Profil
                 </a>
                 <form method="POST" action="{{ route('logout') }}">

@@ -36,7 +36,6 @@ return new class extends Migration
             $table->string('num_cnib')->nullable();
             $table->date('date_cnib');
             $table->string('lieu_cnib');
-            $table->string('nbre_enfant');
             $table->string('charge_uts');
             $table->string('photo');
             $table->timestamps();

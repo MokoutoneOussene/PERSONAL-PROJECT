@@ -158,7 +158,7 @@
                             </tr>
                             <tr class="border_dotted">
                                 <th>Nombre d'enfant</th>
-                                <td>{{ $finds->nbre_enfant }}</td>
+                                <td>{{ $enfant->count() }}</td>
                             </tr>
                             <tr class="border_dotted">
                                 <th>Charge IUTS</th>
